@@ -16,8 +16,8 @@ public class CameraBobbing : MonoBehaviour
     }
     void Update()
     {
-        if (!playercontroller.isColliding)
-        {
+       // if (!playercontroller.isColliding)
+       // {
             float waveslice = 0.0f;
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -51,7 +51,7 @@ public class CameraBobbing : MonoBehaviour
             }
 
             transform.localPosition = cSharpConversion;
-        }
+       // }
 
     }
 }

@@ -7,10 +7,11 @@ public class CameraController : MonoBehaviour
     float rotationX;
     public float Sensitivity;
     public Transform Player;
+    float jumpscare;
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
@@ -24,6 +25,5 @@ public class CameraController : MonoBehaviour
         transform.localEulerAngles = new Vector3(rotationX, 0, 0f);
 
         Player.Rotate(Vector3.up * mouseX);
-
     }
 }
