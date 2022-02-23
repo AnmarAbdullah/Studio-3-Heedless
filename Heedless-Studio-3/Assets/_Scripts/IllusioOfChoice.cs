@@ -39,7 +39,6 @@ public class IllusioOfChoice : MonoBehaviour
             InterActionONE();
             GetComponentInParent<PlayerController>().enabled = false;
             GetComponent<CameraController>().enabled = false;
-            GetComponent<CameraBobbing>().enabled = false;
         }
     }
 
@@ -138,7 +137,6 @@ public class IllusioOfChoice : MonoBehaviour
     {
         inDialogue = false;
         GetComponentInParent<PlayerController>().enabled = true;
-        GetComponent<CameraBobbing>().enabled = true;
         GetComponent<CameraController>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
