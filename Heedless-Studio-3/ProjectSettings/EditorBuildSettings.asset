@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Arrival to Ravencroft Manor (Introduction Zone).unity
+    guid: f832ddd40064d434e82aac9ad1b2f150
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Main Hall (Reward and Rest Preparation Zone).unity
+    guid: 85d34a8c5c234f04cbd87e8bbf797210
+  - enabled: 1
+    path: Assets/Scenes/Anmar Scene.unity
+    guid: 62fa695249d0e00478053650db218237
   m_configObjects: {}
