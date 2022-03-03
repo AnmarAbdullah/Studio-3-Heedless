@@ -14,11 +14,12 @@ public class IllusioOfChoice : MonoBehaviour
     [SerializeField] float InteractionTimerTwo;
     [SerializeField] float InteractionTimerThree;
     [SerializeField] bool inInteractionOne;
+    [SerializeField] bool inInteractionTwo;
 
     public GameObject[] choices;
 
     float firstVoiceLine = 19;
-    float SecondVoiceLine;
+    float SecondVoiceLine = 74;
     float ThirdVoiceLine;
     bool inDialogue;
 
@@ -37,6 +38,10 @@ public class IllusioOfChoice : MonoBehaviour
         if (inDialogue)
         {
             InterActionONE();
+            if (inInteractionTwo)
+            {
+                InterActionTWO();
+            }
             GetComponentInParent<PlayerController>().enabled = false;
             GetComponent<CameraController>().enabled = false;
         }
@@ -49,7 +54,7 @@ public class IllusioOfChoice : MonoBehaviour
         if (inInteractionOne)
         {
             InteractionTimerOne += Time.deltaTime;
-            if (InteractionTimerOne >= firstVoiceLine)
+            if (InteractionTimerOne >= GetComponent<AudioSource>().clip.length)
             {
                 choices[0].SetActive(true);
                 choices[1].SetActive(true);
@@ -62,9 +67,7 @@ public class IllusioOfChoice : MonoBehaviour
         choiceObject = GameObject.Find("ChoiceA");
         this.GetComponent<AudioSource>().clip = choiceObject.GetComponent<AudioSource>().clip;
         this.GetComponent<AudioSource>().Play();
-        //invoke interaction two
-        choices[0].gameObject.SetActive(false);
-        choices[1].gameObject.SetActive(false);
+        removeButtons();
         if (InteractionCount == 2)
         {
             InterActionTWO();
@@ -80,9 +83,8 @@ public class IllusioOfChoice : MonoBehaviour
         choiceObject = GameObject.Find("ChoiceB");
         choiceObject.GetComponent<AudioSource>().Play();
         //invoke interaction two if amount of interactions is 2 else remove player from cutscene mode
-        choices[0].gameObject.SetActive(false);
-        choices[1].gameObject.SetActive(false);
-        if (InteractionCount > 2)
+        removeButtons();
+        if (InteractionCount == 2)
         {
             InterActionTWO();
         }
@@ -94,26 +96,47 @@ public class IllusioOfChoice : MonoBehaviour
 
     public void InterActionTWO()
     {
-        //play voice line...second first interaction choice at certain time...
+        inInteractionTwo = true;
         InteractionTimerTwo += Time.deltaTime;
-        if (InteractionTimerOne > SecondVoiceLine)
+        if (InteractionTimerTwo > choiceObject.GetComponent<AudioSource>().clip.length)
         {
             choices[2].SetActive(true);
             choices[3].SetActive(true);
-        }
+        }  
     }
 
     public void playChoiceAtwo(/*AudioSource choice*/)
     {
+        inInteractionTwo = false;
         choiceObject = GameObject.Find("ChoiceA2");
         choiceObject.GetComponent<AudioSource>().Play();
-        //invoke interaction two
+        GetComponentInParent<PlayerController>().TeleEarn = true;
+        removeButtons();
+        if (InteractionCount > 3)
+        {
+            InterActionThree();
+        }
+        else
+        {
+            Invoke(nameof(endDialogue), choiceObject.GetComponent<AudioSource>().clip.length);
+        }
     }
     public void playChoiceBtwo(/*GameObject choice*/)
     {
+        inInteractionTwo = false;
         choiceObject = GameObject.Find("ChoiceB2");
         choiceObject.GetComponent<AudioSource>().Play();
+        GetComponentInParent<PlayerController>().SpeedEarn = true;
         //invoke interaction two if amount of interactions is 2 else remove player from cutscene mode
+        removeButtons();
+        if (InteractionCount > 3)
+        {
+            InterActionThree();
+        }
+        else
+        {
+            Invoke(nameof(endDialogue), choiceObject.GetComponent<AudioSource>().clip.length);
+        }
     }
 
     public void InterActionThree()
@@ -140,6 +163,13 @@ public class IllusioOfChoice : MonoBehaviour
         GetComponent<CameraController>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+    void removeButtons()
+    {
+        for (int i = 0; i < choices.Length; i++)
+        {
+            choices[i].gameObject.SetActive(false);
+        }
     }
 
 }

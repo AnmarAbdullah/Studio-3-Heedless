@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public float Sensitivity;
     public Transform Player;
     Animator anim;
+    public PlayerController pplayer;
     float jumpscare;
     void Start()
     {
@@ -26,14 +27,22 @@ public class CameraController : MonoBehaviour
 
         Player.Rotate(Vector3.up * mouseX);*/
 
-        if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A))
+        if(GetComponentInParent<Rigidbody>().velocity.x > 0 || GetComponentInParent<Rigidbody>().velocity.x < 0)
+        {
+            anim.enabled = true;
+        }
+        else
+        {
+            anim.enabled = false;
+        }
+       /* if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A))
         {
             anim.enabled = true;
         }
         else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A))
         {
             anim.enabled = false;
-        }
+        }*/
     }
     private void LateUpdate()
     {
