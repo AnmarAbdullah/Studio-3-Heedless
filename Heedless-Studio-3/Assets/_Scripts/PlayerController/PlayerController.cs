@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed;
     float moveForward;
     float moveAside;
     bool FlashLight;
     public Light flashlight;
     public Animator anim;
+    public Camera cam;
 
     //------
     [SerializeField] float TeleTime;
     [SerializeField] public bool Magnet;
-   public bool TeleEarn;
+   public bool TelekenesisEarn;
     //-----
     public float speedTimer;
     public bool SpeedEarn;
     public bool speedBoost;
     //-----
+    [SerializeField]bool Teleporting = true;
+    public GameObject tpObject;
+    bool TPMode;
+
     public Pages pages;
     public Rigidbody rb;
+
+    [SerializeField] int collisions;
+    [SerializeField] public bool isColliding;
+
+    public AbilitiesManager abManager;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,13 +43,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveForward = Input.GetAxis("Vertical") * speed;
-        moveAside = Input.GetAxis("Horizontal") * speed;
+        moveForward = Input.GetAxis("Vertical");
+        moveAside = Input.GetAxis("Horizontal");
 
-        rb.velocity = (transform.forward * moveForward) + (transform.right * moveAside) + (transform.up * rb.velocity.y) * Time.deltaTime;
-        rb.velocity = new Vector3(rb.velocity.x, -9.81f, rb.velocity.z);
-
-        if(rb.velocity.x > 0f|| rb.velocity.x < 0)
+        Vector3 direction = (transform.forward * moveForward + transform.right* moveAside).normalized;
+        rb.velocity = direction * speed; //+ (transform.right * moveAside);// + (transform.up * rb.velocity.y);
+     //   rb.velocity = new Vector3(rb.velocity.x,rb.velocity.y, rb.velocity.z).normalized * speed * Time.deltaTime;
+       // Debug.Log(rb.velocity);        
+        if (rb.velocity.x > 30 || rb.velocity.z > 30)
+        {
+            rb.velocity = rb.velocity / 1.5f;
+        }
+        if (rb.velocity.x > 0f|| rb.velocity.x < 0)
         {
             anim.SetBool("isRunning", true);
         }
@@ -47,28 +62,21 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
         }
-        if (Input.GetKeyDown(KeyCode.E) && TeleEarn)
+        if (Input.GetKeyDown(KeyCode.E) && abManager.Telekenesis)
         {
             Magnet = true;
         }
-        if(Input.GetKeyDown(KeyCode.R) && SpeedEarn )
+        if(Input.GetKeyDown(KeyCode.R) && abManager.SpeedBoost)
         {
             speedBoost = true;
         }
-        /*if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.F) /*&& abManager.SpeedBoost*/)
         {
-            anim.SetBool("isRunning", true);
+            Teleporting = true;
         }
-        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A))
-            {
-            anim.SetBool("isRunning", false);
-        }*/
+        //setup for teleport here
 
-
-
-       /* rb.velocity = (transform.forward * moveForward) + (transform.right * moveAside) + (transform.up * rb.velocity.y) * Time.deltaTime;
-        rb.velocity = new Vector3 (rb.velocity.x, -9.81f, rb.velocity.z);*/
-        if(Input.GetKeyDown(KeyCode.Space)) //if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             flashlight.enabled = !flashlight.enabled;
         }
@@ -83,9 +91,13 @@ public class PlayerController : MonoBehaviour
             speedTimer += Time.deltaTime;
             if(speedTimer >= 8) { speedBoost = false; speedTimer = 0; speed = 25; }
         }
+        if (Teleporting)
+        {
+            Teleport();
+            tpObject.transform.parent = cam.transform;
+        }
+
     }
-    [SerializeField]int collisions;
-    [SerializeField] public bool isColliding;
     private void OnCollisionEnter(Collision collision)
     {
         isColliding = true;
@@ -94,6 +106,14 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         isColliding = false;
+    }
+    void Teleport()
+    {
+      if(Input.GetButtonDown("Fire1"))
+      {
+            transform.Translate(Vector3.forward * Time.deltaTime * 1000);
+            Teleporting = false;
+      }
     }
 
 }

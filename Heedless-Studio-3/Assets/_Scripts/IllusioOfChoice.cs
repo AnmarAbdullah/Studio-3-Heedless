@@ -22,6 +22,7 @@ public class IllusioOfChoice : MonoBehaviour
     float SecondVoiceLine = 74;
     float ThirdVoiceLine;
     bool inDialogue;
+    public AbilitiesManager ABManage;
 
     //reworking all of this soon!
 
@@ -31,7 +32,9 @@ public class IllusioOfChoice : MonoBehaviour
         inInteractionOne = true;
         inDialogue = true;
         Cursor.lockState = CursorLockMode.None;
-        //this.GetComponent<AudioSource>()
+        choicebla = GetComponent<AudioSource>();
+        GetComponentInParent<PlayerController>().enabled = false;
+        GetComponent<CameraController>().enabled = false;
     }
     private void Update()
     {
@@ -44,6 +47,14 @@ public class IllusioOfChoice : MonoBehaviour
             }
             GetComponentInParent<PlayerController>().enabled = false;
             GetComponent<CameraController>().enabled = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SkipDialogue();
+        }
+        if (!choicebla.isPlaying && !inInteractionTwo && !inInteractionOne)
+        {
+            endDialogue();
         }
     }
 
@@ -65,32 +76,33 @@ public class IllusioOfChoice : MonoBehaviour
     {
         inInteractionOne = false;
         choiceObject = GameObject.Find("ChoiceA");
-        this.GetComponent<AudioSource>().clip = choiceObject.GetComponent<AudioSource>().clip;
-        this.GetComponent<AudioSource>().Play();
+        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
+        choicebla.Play();
         removeButtons();
         if (InteractionCount == 2)
         {
             InterActionTWO();
         }
-        else
+        else if (!choicebla.isPlaying)
         {
-            Invoke(nameof(endDialogue), choiceObject.GetComponent<AudioSource>().clip.length);
+            endDialogue();
         }
     }
     public void playChoiceB(/*GameObject choice*/)
     {
         inInteractionOne = false;
         choiceObject = GameObject.Find("ChoiceB");
-        choiceObject.GetComponent<AudioSource>().Play();
+        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
+        choicebla.Play();
         //invoke interaction two if amount of interactions is 2 else remove player from cutscene mode
         removeButtons();
         if (InteractionCount == 2)
         {
             InterActionTWO();
         }
-        else
+        else if(!choicebla.isPlaying)
         {
-            Invoke(nameof(endDialogue), choiceObject.GetComponent<AudioSource>().clip.length);
+            endDialogue();
         }
     }
 
@@ -107,35 +119,41 @@ public class IllusioOfChoice : MonoBehaviour
 
     public void playChoiceAtwo(/*AudioSource choice*/)
     {
+        removeButtons();
         inInteractionTwo = false;
         choiceObject = GameObject.Find("ChoiceA2");
-        choiceObject.GetComponent<AudioSource>().Play();
-        GetComponentInParent<PlayerController>().TeleEarn = true;
+        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
+        choicebla.Play();
+        GetComponentInParent<PlayerController>().TelekenesisEarn = true;
+        ABManage.Telekenesis = true;
         removeButtons();
-        if (InteractionCount > 3)
+        if (InteractionCount == 3)
         {
             InterActionThree();
         }
-        else
+        else if (!choicebla.isPlaying)
         {
-            Invoke(nameof(endDialogue), choiceObject.GetComponent<AudioSource>().clip.length);
+            endDialogue();
         }
     }
     public void playChoiceBtwo(/*GameObject choice*/)
     {
+        removeButtons();
         inInteractionTwo = false;
         choiceObject = GameObject.Find("ChoiceB2");
-        choiceObject.GetComponent<AudioSource>().Play();
-        GetComponentInParent<PlayerController>().SpeedEarn = true;
+        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
+        choicebla.Play();
+        //GetComponentInParent<PlayerController>().SpeedEarn = true;
+        ABManage.SpeedBoost = true;
         //invoke interaction two if amount of interactions is 2 else remove player from cutscene mode
         removeButtons();
-        if (InteractionCount > 3)
+        if (InteractionCount == 3)
         {
             InterActionThree();
         }
-        else
+         else if(!choicebla.isPlaying)
         {
-            Invoke(nameof(endDialogue), choiceObject.GetComponent<AudioSource>().clip.length);
+            endDialogue();
         }
     }
 
@@ -163,6 +181,7 @@ public class IllusioOfChoice : MonoBehaviour
         GetComponent<CameraController>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log("heloo????????????");
     }
     void removeButtons()
     {
@@ -170,6 +189,17 @@ public class IllusioOfChoice : MonoBehaviour
         {
             choices[i].gameObject.SetActive(false);
         }
+    }
+    void SkipDialogue()
+    {
+        // if (choicebla.isPlaying)
+        // {
+            //GetComponent<AudioSource>().time += 5;
+            choicebla.time += 5;
+            if(inInteractionOne) InteractionTimerOne += 5;
+            if(inInteractionTwo) InteractionTimerTwo += 5;
+            //GetComponent<AudioSource>().time += 5;  
+        //}
     }
 
 }

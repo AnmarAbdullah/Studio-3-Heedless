@@ -75658,6 +75658,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerController 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1916240267660453532, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916240267660453533, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
+      propertyPath: speed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916240267660453533, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
+      propertyPath: abManager
+      value: 
+      objectReference: {fileID: 11400000, guid: bcbc5847fe74513419838fbe370abfb7, type: 2}
+    - target: {fileID: 1916240267660453534, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2097942005958643884, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -75714,6 +75730,18 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5193981509115618849, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193981509115618861, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193981509115618863, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
+      propertyPath: ABManage
+      value: 
+      objectReference: {fileID: 11400000, guid: bcbc5847fe74513419838fbe370abfb7, type: 2}
     - target: {fileID: 5193981509115618863, guid: 2f7de6eab60b4b44e917a8e33dd36607, type: 3}
       propertyPath: m_Enabled
       value: 1
