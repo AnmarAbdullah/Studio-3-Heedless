@@ -5,189 +5,114 @@ using TMPro;
 
 public class IllusioOfChoice : MonoBehaviour
 {
-    public GameObject choiceObject;
-    public AudioSource choicebla;
-    [SerializeField] int InteractionCount;
+    public GameObject[] choiceObject;
+    public AudioSource choiceblay;
 
+    public GameObject[] buttons;
 
-    [SerializeField] float InteractionTimerOne;
-    [SerializeField] float InteractionTimerTwo;
-    [SerializeField] float InteractionTimerThree;
-    [SerializeField] bool inInteractionOne;
-    [SerializeField] bool inInteractionTwo;
+    [SerializeField] float InteractionTimer;
 
-    public GameObject[] choices;
+    [SerializeField]bool choicechosen;
+    [SerializeField] bool abilityChoicer;
+    Transform player;
 
-    float firstVoiceLine = 19;
-    float SecondVoiceLine = 74;
-    float ThirdVoiceLine;
-    bool inDialogue;
+    public GameObject lookat;
+
+    public GameObject choiceA;
+    public GameObject choiceB;
+
+    public GameObject proffesor;
+
+    public bool inDialogue;
     public AbilitiesManager ABManage;
-
-    //reworking all of this soon!
-
-
+    Animation anim;
     private void Start()
     {
-        inInteractionOne = true;
-        inDialogue = true;
-        Cursor.lockState = CursorLockMode.None;
-        choicebla = GetComponent<AudioSource>();
-        GetComponentInParent<PlayerController>().enabled = false;
-        GetComponent<CameraController>().enabled = false;
+        player = player = GameObject.FindWithTag("Player").transform;
+        choiceblay = GetComponent<AudioSource>();
+        anim = GetComponent<Animation>();
     }
     private void Update()
     {
         if (inDialogue)
         {
-            InterActionONE();
-            if (inInteractionTwo)
+            Vector3 scale = new Vector3(100, 95.90824f, 100);
+            transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
+            //anim.Play();
+            //InterAction();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            FindObjectOfType<PlayerController>().enabled = false;
+            FindObjectOfType<CameraController>().enabled = false;
+            player.transform.LookAt(lookat.transform);
+            InteractionTimer += Time.deltaTime;
+            if (InteractionTimer >= choiceblay.clip.length)
             {
-                InterActionTWO();
+                buttons[0].SetActive(true);
+                buttons[1].SetActive(true);
             }
-            GetComponentInParent<PlayerController>().enabled = false;
-            GetComponent<CameraController>().enabled = false;
+            if (choicechosen)
+            {
+                InteractionTimer = 0;
+            }
+            if (choicechosen && !choiceblay.isPlaying)
+            {
+                endDialogue();
+                player.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
         }
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             SkipDialogue();
         }
-        if (!choicebla.isPlaying && !inInteractionTwo && !inInteractionOne)
+        if (!choiceblay.isPlaying)
         {
-            endDialogue();
+            //CAEWendDialogue();
         }
     }
 
-    public void InterActionONE()
+    public void InterAction()
     {
-        //inDialogue = true;
-        //play voice line...set active first interaction choices at certain time...
-        if (inInteractionOne)
-        {
-            InteractionTimerOne += Time.deltaTime;
-            if (InteractionTimerOne >= GetComponent<AudioSource>().clip.length)
-            {
-                choices[0].SetActive(true);
-                choices[1].SetActive(true);
-            }
-        }
+        choiceblay.Play();
     }
-    public void playChoiceA(/*AudioSource choice*/)
+    public void playChoiceA()
     {
-        inInteractionOne = false;
-        choiceObject = GameObject.Find("ChoiceA");
-        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
-        choicebla.Play();
+        choicechosen = true;
+        InteractionTimer = 0;
+        choiceblay.clip = choiceA.GetComponent<AudioSource>().clip;
+        choiceblay.Play();
         removeButtons();
-        if (InteractionCount == 2)
-        {
-            InterActionTWO();
-        }
-        else if (!choicebla.isPlaying)
-        {
-            endDialogue();
-        }
+        if (abilityChoicer) ABManage.SpeedBoost = true;
     }
-    public void playChoiceB(/*GameObject choice*/)
+    public void playChoiceB()
     {
-        inInteractionOne = false;
-        choiceObject = GameObject.Find("ChoiceB");
-        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
-        choicebla.Play();
-        //invoke interaction two if amount of interactions is 2 else remove player from cutscene mode
+        choicechosen = true;
+        InteractionTimer = 0;
+        choiceblay.clip = choiceB.GetComponent<AudioSource>().clip;
+        choiceblay.Play();
         removeButtons();
-        if (InteractionCount == 2)
-        {
-            InterActionTWO();
-        }
-        else if(!choicebla.isPlaying)
-        {
-            endDialogue();
-        }
-    }
-
-    public void InterActionTWO()
-    {
-        inInteractionTwo = true;
-        InteractionTimerTwo += Time.deltaTime;
-        if (InteractionTimerTwo > choiceObject.GetComponent<AudioSource>().clip.length)
-        {
-            choices[2].SetActive(true);
-            choices[3].SetActive(true);
-        }  
-    }
-
-    public void playChoiceAtwo(/*AudioSource choice*/)
-    {
-        removeButtons();
-        inInteractionTwo = false;
-        choiceObject = GameObject.Find("ChoiceA2");
-        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
-        choicebla.Play();
-        GetComponentInParent<PlayerController>().TelekenesisEarn = true;
-        ABManage.Telekenesis = true;
-        removeButtons();
-        if (InteractionCount == 3)
-        {
-            InterActionThree();
-        }
-        else if (!choicebla.isPlaying)
-        {
-            endDialogue();
-        }
-    }
-    public void playChoiceBtwo(/*GameObject choice*/)
-    {
-        removeButtons();
-        inInteractionTwo = false;
-        choiceObject = GameObject.Find("ChoiceB2");
-        choicebla.clip = choiceObject.GetComponent<AudioSource>().clip;
-        choicebla.Play();
-        //GetComponentInParent<PlayerController>().SpeedEarn = true;
-        ABManage.SpeedBoost = true;
-        //invoke interaction two if amount of interactions is 2 else remove player from cutscene mode
-        removeButtons();
-        if (InteractionCount == 3)
-        {
-            InterActionThree();
-        }
-         else if(!choicebla.isPlaying)
-        {
-            endDialogue();
-        }
-    }
-
-    public void InterActionThree()
-    {
-        //play voice line...second first interaction choice at certain time...
-
-    }
-    public void playChoiceAthree(/*AudioSource choice*/)
-    {
-        choiceObject = GameObject.Find("ChoiceA3");
-        choiceObject.GetComponent<AudioSource>().Play();
-        //invoke interaction two
-    }
-    public void playChoiceBthree(/*GameObject choice*/)
-    {
-        choiceObject = GameObject.Find("ChoiceB3");
-        choiceObject.GetComponent<AudioSource>().Play();
-        //invoke interaction two if amount of interactions is 2 else remove player from cutscene mode
+        if(abilityChoicer)ABManage.Telekenesis = true;
     }
     void endDialogue()
     {
         inDialogue = false;
-        GetComponentInParent<PlayerController>().enabled = true;
-        GetComponent<CameraController>().enabled = true;
+        FindObjectOfType<PlayerController>().enabled = true;
+        FindObjectOfType<PlayerController>().speed = 25;
+        FindObjectOfType<CameraController>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("heloo????????????");
+        Vector3 scale = new Vector3(100, -5, 100);
+        transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
+
+        //Debug.Log("heloo????????????");
     }
     void removeButtons()
     {
-        for (int i = 0; i < choices.Length; i++)
+        for (int i = 0; i < buttons.Length; i++)
         {
-            choices[i].gameObject.SetActive(false);
+            buttons[i].gameObject.SetActive(false);
         }
     }
     void SkipDialogue()
@@ -195,11 +120,12 @@ public class IllusioOfChoice : MonoBehaviour
         // if (choicebla.isPlaying)
         // {
             //GetComponent<AudioSource>().time += 5;
-            choicebla.time += 5;
-            if(inInteractionOne) InteractionTimerOne += 5;
-            if(inInteractionTwo) InteractionTimerTwo += 5;
+            choiceblay.time += 5;
+            InteractionTimer += 5;
             //GetComponent<AudioSource>().time += 5;  
         //}
     }
+
+
 
 }

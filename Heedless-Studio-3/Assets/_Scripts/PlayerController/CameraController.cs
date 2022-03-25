@@ -14,37 +14,10 @@ public class CameraController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         anim.enabled = false;
+        pplayer = FindObjectOfType<PlayerController>();
     }
-
-    // Update is called once per frame
+ 
     void Update()
-    {
-       /* float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * Sensitivity;
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * Sensitivity;
-        rotationX -= mouseY;
-        rotationX = Mathf.Clamp(rotationX, -90, 70);
-        transform.localEulerAngles = new Vector3(rotationX, 0, 0f);
-
-        Player.Rotate(Vector3.up * mouseX);*/
-
-        if(GetComponentInParent<Rigidbody>().velocity.x > 0 || GetComponentInParent<Rigidbody>().velocity.x < 0)
-        {
-            anim.enabled = true;
-        }
-        else
-        {
-            anim.enabled = false;
-        }
-       /* if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.A))
-        {
-            anim.enabled = true;
-        }
-        else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A))
-        {
-            anim.enabled = false;
-        }*/
-    }
-    private void LateUpdate()
     {
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * Sensitivity;
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * Sensitivity;
@@ -53,5 +26,25 @@ public class CameraController : MonoBehaviour
         transform.localEulerAngles = new Vector3(rotationX, 0, 0f);
 
         Player.Rotate(Vector3.up * mouseX);
+
+        if (GetComponentInParent<Rigidbody>().velocity.x > 0 || GetComponentInParent<Rigidbody>().velocity.x < 0)
+        {
+            anim.enabled = true;
+        }
+        
+        else
+        {
+            anim.enabled = false;
+        }
+        
+        if(FindObjectOfType<IllusioOfChoice>().inDialogue)
+        {
+            anim.enabled = false;
+        }
+        
+        else
+        {
+            anim.enabled = true;
+        }
     }
 }
