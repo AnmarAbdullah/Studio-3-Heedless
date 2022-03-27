@@ -8,6 +8,8 @@ TagManager:
   - Node
   - Floor
   - Interaction
+  - Vanish
+  - Stun
   layers:
   - Default
   - TransparentFX

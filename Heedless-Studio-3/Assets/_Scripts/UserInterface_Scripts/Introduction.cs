@@ -18,7 +18,7 @@ public class Introduction : MonoBehaviour
 
         if (timeElapsed > delayBeforeLoading)
         {
-            SceneManager.LoadScene("Arrival to Ravencroft Manor - Loading");
+            SceneManager.LoadScene("Controls Screen");
         }
     }
 }

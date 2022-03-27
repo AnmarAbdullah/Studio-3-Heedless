@@ -14,14 +14,14 @@ public class MusicChange : MonoBehaviour
     }
     void Update()
     {
-        if(player.dist <= 30)
+        if(player.dist <= 35)
         {
             calmMusic.volume = 0;
-            chaseMusic.volume = 1;
+            chaseMusic.volume = 0.2f;
         }
         else
         {
-            calmMusic.volume = 1;
+            calmMusic.volume = 0.2f;
             chaseMusic.volume = 0;
         }
     }

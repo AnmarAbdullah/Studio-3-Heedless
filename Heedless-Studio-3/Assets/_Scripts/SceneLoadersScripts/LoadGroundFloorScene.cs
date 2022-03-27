@@ -9,7 +9,7 @@ public class LoadGroundFloorScene : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            SceneManager.LoadScene("Ground Floor (Action Zone) V2");
+            SceneManager.LoadScene("Ground Floor - Loading");
         }
     }
 }

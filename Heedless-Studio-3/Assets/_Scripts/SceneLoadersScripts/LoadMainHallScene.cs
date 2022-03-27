@@ -9,7 +9,7 @@ public class LoadMainHallScene : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            SceneManager.LoadScene("Main Hall (Reward and Rest Preparation Zone)");
+            SceneManager.LoadScene("Main Hall Loading)");
         }
     }
 }
