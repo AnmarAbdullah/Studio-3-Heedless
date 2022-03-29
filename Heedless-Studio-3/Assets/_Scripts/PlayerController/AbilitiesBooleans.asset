@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37a7caa12d05064783f54956142f720, type: 3}
   m_Name: AbilitiesBooleans
   m_EditorClassIdentifier: 
-  Telekenesis: 0
-  Teleport: 0
-  SpeedBoost: 0
+  Telekenesis: 1
+  Teleport: 1
+  SpeedBoost: 1
+  MouseSens: 1

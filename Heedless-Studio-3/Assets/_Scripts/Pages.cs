@@ -9,10 +9,12 @@ public class Pages : MonoBehaviour
     [SerializeField] float dist;
     [SerializeField] Transform player;
     PlayerController pplayer;
+    public ParticleSystem particle;
     private void Start()
     {
         pplayer = FindObjectOfType<PlayerController>();
         player = GameObject.FindWithTag("Player").transform;
+        particle.transform.position = transform.position;
     }
     void Update()
     {
@@ -29,7 +31,9 @@ public class Pages : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             pplayer.pageCounter += 1;
+            particle.transform.position = transform.position;
             Destroy(gameObject);
+            particle.Play();
         }
     }
 }

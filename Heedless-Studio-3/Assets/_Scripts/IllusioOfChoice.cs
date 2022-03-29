@@ -30,6 +30,8 @@ public class IllusioOfChoice : MonoBehaviour
     public AbilitiesManager ABManage;
     Animation anim;
     public GameObject cam;
+    public ParticleSystem particle;
+    float particleTimer;
     private void Start()
     {
         player = player = GameObject.FindWithTag("Player").transform;
@@ -57,7 +59,7 @@ public class IllusioOfChoice : MonoBehaviour
                 buttons[1].SetActive(true);
             }
 
-            cam.GetComponent<Animator>().enabled = false;            
+           // cam.GetComponent<Animator>().enabled = false; 
             if (choicechosen)
             {
                 InteractionTimer = 0;
@@ -65,12 +67,21 @@ public class IllusioOfChoice : MonoBehaviour
             if (choicechosen && !choiceblay.isPlaying)
             {
                 endDialogue();
+                Destroy(transform.gameObject, 2);
                 player.rotation = Quaternion.Euler(0, 0, 0);
             }
             if(noChoice && !choiceblay.isPlaying)
             {
                 endDialogue();
                 player.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            if(abilityChoicer && choicechosen)
+            {
+                particleTimer += Time.deltaTime;
+                if(particleTimer >= 8)
+                {
+                    particle.Play();
+                }
             }
 
         }
@@ -101,7 +112,7 @@ public class IllusioOfChoice : MonoBehaviour
         choiceblay.clip = choiceA.GetComponent<AudioSource>().clip;
         choiceblay.Play();
         removeButtons();
-        if (abilityChoicer) ABManage.SpeedBoost = true;
+        if (abilityChoicer) { ABManage.SpeedBoost = true; }
         if (ABManage.SpeedBoost && hasTp) ABManage.Teleport = true;
     }
     public void playChoiceB()
@@ -145,6 +156,7 @@ public class IllusioOfChoice : MonoBehaviour
             //GetComponent<AudioSource>().time += 5;
             choiceblay.time += 5;
             InteractionTimer += 5;
+        particleTimer += 5;
             //GetComponent<AudioSource>().time += 5;  
         //}
     }

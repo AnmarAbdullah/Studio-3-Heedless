@@ -22,19 +22,21 @@ public class CameraController : MonoBehaviour
  
     void Update()
     {
-        if (FindObjectOfType<IllusioOfChoice>().inDialogue)
-        {
-            anim.enabled = false;
-        }
-        if (mouseSens.MouseSens == 0)
-        {
-            mouseSens.MouseSens = 150;
-        }
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSens.MouseSens;
         float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSens.MouseSens;
         rotationX -= mouseY;
         rotationX = Mathf.Clamp(rotationX, -90, 70);
         transform.localEulerAngles = new Vector3(rotationX, 0, 0f);
+        if (mouseSens.MouseSens == 0)
+        {
+            mouseSens.MouseSens = 150;
+        }
+
+        Player.Rotate(Vector3.up * mouseX);
+        if (FindObjectOfType<IllusioOfChoice>().inDialogue)
+        {
+            anim.enabled = false;
+        }
 
         Player.Rotate(Vector3.up * mouseX);
 
