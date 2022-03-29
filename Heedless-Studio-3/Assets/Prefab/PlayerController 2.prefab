@@ -2145,6 +2145,7 @@ MonoBehaviour:
   Sensitivity: 150
   Player: {fileID: 2097942005958643884}
   pplayer: {fileID: 0}
+  mouseSens: {fileID: 11400000, guid: bcbc5847fe74513419838fbe370abfb7, type: 2}
 --- !u!95 &5193981509115618849
 Animator:
   serializedVersion: 3

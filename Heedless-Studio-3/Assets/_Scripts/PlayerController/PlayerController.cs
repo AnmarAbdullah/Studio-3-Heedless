@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public int PlayerLifes = 5;
     
     public int pageCounter;
+    AudioSource music;
 
 
     //abilities manager....
@@ -69,20 +70,19 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         pages = FindObjectOfType<Pages>();
         camm = GetComponentInChildren<CameraController>();
+        music = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PageCounterText.text = pageCounter.ToString();
-        PlayerLifeText.text = PlayerLifes.ToString();
+        
         moveForward = Input.GetAxis("Vertical");
         moveAside = Input.GetAxis("Horizontal");
 
         Vector3 direction = (transform.forward * moveForward + transform.right* moveAside).normalized;
-        rb.velocity = direction * speed; //+ (transform.right * moveAside);// + (transform.up * rb.velocity.y);
-     //   rb.velocity = new Vector3(rb.velocity.x,rb.velocity.y, rb.velocity.z).normalized * speed * Time.deltaTime;
-       // Debug.Log(rb.velocity);        
+        rb.velocity = direction * speed;
+;        
         if (rb.velocity.x > 30 || rb.velocity.z > 30)
         {
             rb.velocity = rb.velocity / 1.5f;
@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
             jumpscare = false;
             camm.enabled = true;
             if (speedBoost) speed = 35;
-            else { speed = 25; };
+            else { speed = 20; };
         }
         
         if (Caught && jumpscare)
@@ -234,10 +234,16 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+        if(pageCounter >= ThisScenePages - 15)
+        {
+            music.Play();
+        }
         if (PlayerLifes == 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        PageCounterText.text = pageCounter.ToString();
+        PlayerLifeText.text = PlayerLifes.ToString();
 
     }
     private void OnCollisionEnter(Collision collision)
@@ -263,7 +269,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        /*if (other.gameObject.CompareTag("Stun"))
+        if (other.gameObject.CompareTag("Stun"))
         {
             isStunned = true;
             stunTimer = 0;
@@ -272,12 +278,15 @@ public class PlayerController : MonoBehaviour
         {
             isVanished = true;
             vanishTimer = 0;
-        }*/
+        }
         if (other.gameObject.CompareTag("Interaction"))
         {
+            speed = 0;
+            anim.SetBool("isRunning", false);
+            rb.isKinematic = true;
+            this.enabled = false;
             FindObjectOfType<IllusioOfChoice>().InterAction();
             FindObjectOfType<IllusioOfChoice>().inDialogue = true;
-            speed = 0;
             Destroy(other.gameObject);
         }
     }

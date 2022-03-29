@@ -10,7 +10,7 @@ public class IllusioOfChoice : MonoBehaviour
 
     public GameObject[] buttons;
 
-    [SerializeField] float InteractionTimer;
+    public float InteractionTimer;
 
     [SerializeField]bool choicechosen;
     [SerializeField] bool abilityChoicer;
@@ -21,16 +21,21 @@ public class IllusioOfChoice : MonoBehaviour
     public GameObject choiceA;
     public GameObject choiceB;
 
-    public GameObject proffesor;
+    public GameObject nextProffesor;
+    float disappearTimer;
 
     public bool inDialogue;
+    public bool noChoice;
+    public bool hasTp;
     public AbilitiesManager ABManage;
     Animation anim;
+    public GameObject cam;
     private void Start()
     {
         player = player = GameObject.FindWithTag("Player").transform;
         choiceblay = GetComponent<AudioSource>();
         anim = GetComponent<Animation>();
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
     private void Update()
     {
@@ -46,11 +51,13 @@ public class IllusioOfChoice : MonoBehaviour
             FindObjectOfType<CameraController>().enabled = false;
             player.transform.LookAt(lookat.transform);
             InteractionTimer += Time.deltaTime;
-            if (InteractionTimer >= choiceblay.clip.length)
+            if (InteractionTimer >= choiceblay.clip.length && choiceB != null)
             {
                 buttons[0].SetActive(true);
                 buttons[1].SetActive(true);
             }
+
+            cam.GetComponent<Animator>().enabled = false;            
             if (choicechosen)
             {
                 InteractionTimer = 0;
@@ -60,10 +67,20 @@ public class IllusioOfChoice : MonoBehaviour
                 endDialogue();
                 player.rotation = Quaternion.Euler(0, 0, 0);
             }
+            if(noChoice && !choiceblay.isPlaying)
+            {
+                endDialogue();
+                player.rotation = Quaternion.Euler(0, 0, 0);
+            }
 
         }
+        else
+        {
+            Vector3 scale = new Vector3(100, -5, 100);
+            transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
+        }
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && inDialogue)
         {
             SkipDialogue();
         }
@@ -85,6 +102,7 @@ public class IllusioOfChoice : MonoBehaviour
         choiceblay.Play();
         removeButtons();
         if (abilityChoicer) ABManage.SpeedBoost = true;
+        if (ABManage.SpeedBoost && hasTp) ABManage.Teleport = true;
     }
     public void playChoiceB()
     {
@@ -94,18 +112,23 @@ public class IllusioOfChoice : MonoBehaviour
         choiceblay.Play();
         removeButtons();
         if(abilityChoicer)ABManage.Telekenesis = true;
+        if(ABManage.Telekenesis && hasTp) ABManage.Teleport = true;
     }
+    //create new function to unlock tp
     void endDialogue()
     {
         inDialogue = false;
         FindObjectOfType<PlayerController>().enabled = true;
-        FindObjectOfType<PlayerController>().speed = 25;
+        FindObjectOfType<PlayerController>().speed = 20;
         FindObjectOfType<CameraController>().enabled = true;
+        FindObjectOfType<PlayerController>().rb.isKinematic = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Vector3 scale = new Vector3(100, -5, 100);
         transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
+        player.rotation = Quaternion.Euler(0, 0, 0);
 
+        nextProffesor.gameObject.SetActive(true);
         //Debug.Log("heloo????????????");
     }
     void removeButtons()

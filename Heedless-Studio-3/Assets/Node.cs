@@ -51,7 +51,7 @@ public class Node : MonoBehaviour , IComparable
             Gizmos.DrawLine(transform.position, neighbors[i].transform.position);
         }
         Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(transform.position, 1f);
+        Gizmos.DrawSphere(transform.position, 0.5f);
 
         Gizmos.color = Color.red;
     }

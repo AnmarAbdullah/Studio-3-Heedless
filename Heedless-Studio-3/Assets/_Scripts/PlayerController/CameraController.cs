@@ -10,17 +10,28 @@ public class CameraController : MonoBehaviour
     Animator anim;
     public PlayerController pplayer;
     float jumpscare;
+    public AbilitiesManager mouseSens;
     void Start()
     {
         anim = GetComponent<Animator>();
         anim.enabled = false;
         pplayer = FindObjectOfType<PlayerController>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
  
     void Update()
     {
-        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * Sensitivity;
-        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * Sensitivity;
+        if (FindObjectOfType<IllusioOfChoice>().inDialogue)
+        {
+            anim.enabled = false;
+        }
+        if (mouseSens.MouseSens == 0)
+        {
+            mouseSens.MouseSens = 150;
+        }
+        float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSens.MouseSens;
+        float mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSens.MouseSens;
         rotationX -= mouseY;
         rotationX = Mathf.Clamp(rotationX, -90, 70);
         transform.localEulerAngles = new Vector3(rotationX, 0, 0f);
@@ -40,11 +51,6 @@ public class CameraController : MonoBehaviour
         if(FindObjectOfType<IllusioOfChoice>().inDialogue)
         {
             anim.enabled = false;
-        }
-        
-        else
-        {
-            anim.enabled = true;
         }
     }
 }
