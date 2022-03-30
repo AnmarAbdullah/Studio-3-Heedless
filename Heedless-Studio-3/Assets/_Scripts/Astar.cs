@@ -173,7 +173,7 @@ public class Astar : MonoBehaviour
                 Towardstart = false;
                 gb.transform.position = Vector3.MoveTowards(gb.transform.position, cam.transform.position, speed * Time.deltaTime);
                 // this  speed is when the player is seen
-                speed = 15;
+                speed = 18;
             }
             else  
             {

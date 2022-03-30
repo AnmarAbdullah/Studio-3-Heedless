@@ -50,13 +50,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level Scenes/Dining Room (Reward and Rest Preparation Zone).unity
     guid: d73e81339a74f8c45b8e5a9e3d6cf180
-  - enabled: 0
-    path: Assets/Scenes/User Interface Scenes/Library - Loading.unity
-    guid: 55e3e64cac79d0348a4ba84b80803469
-  - enabled: 0
-    path: Assets/Scenes/Level Scenes/Library (Action Zone).unity
-    guid: 0dd745d083309b648b8508a9e0128f19
-  - enabled: 0
-    path: Assets/Scenes/User Interface Scenes/Escape from Ravencroft Manor - Loading.unity
-    guid: a1ae52565fd879d4c91d2aba3825eab2
   m_configObjects: {}
