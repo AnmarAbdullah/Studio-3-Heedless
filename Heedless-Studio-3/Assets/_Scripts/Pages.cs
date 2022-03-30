@@ -10,6 +10,7 @@ public class Pages : MonoBehaviour
     [SerializeField] Transform player;
     PlayerController pplayer;
     public ParticleSystem particle;
+    public AudioSource PageSFX;
     private void Start()
     {
         pplayer = FindObjectOfType<PlayerController>();
@@ -34,6 +35,7 @@ public class Pages : MonoBehaviour
             particle.transform.position = transform.position;
             Destroy(gameObject);
             particle.Play();
+            PageSFX.Play();
         }
     }
 }

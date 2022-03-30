@@ -17,11 +17,11 @@ public class MusicChange : MonoBehaviour
         if(player.dist <= 35)
         {
             calmMusic.volume = 0;
-            chaseMusic.volume = 0.2f;
+            chaseMusic.volume = 0.5f;
         }
         else
         {
-            calmMusic.volume = 0.2f;
+            calmMusic.volume = 0.5f;
             chaseMusic.volume = 0;
         }
     }
