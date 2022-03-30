@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public PlayerController pplayer;
     float jumpscare;
     public AbilitiesManager mouseSens;
+    public bool Infuckingdialogue;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -33,15 +34,13 @@ public class CameraController : MonoBehaviour
         }
 
         Player.Rotate(Vector3.up * mouseX);
-        if (FindObjectOfType<IllusioOfChoice>().inDialogue)
-        {
-            anim.enabled = false;
-        }
+
 
         Player.Rotate(Vector3.up * mouseX);
 
         if (GetComponentInParent<Rigidbody>().velocity.x > 0 || GetComponentInParent<Rigidbody>().velocity.x < 0)
         {
+            /*if (!Infuckingdialogue) { anim.enabled = true; };*/
             anim.enabled = true;
         }
         

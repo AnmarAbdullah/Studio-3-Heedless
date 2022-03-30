@@ -7,9 +7,9 @@ public class LoadMainHallScene : MonoBehaviour
 {
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.tag == "Player")
+        if (collider.gameObject.CompareTag("Player"))/*== "Player")*/
         {
-            SceneManager.LoadScene("Main Hall Loading)");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

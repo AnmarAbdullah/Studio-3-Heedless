@@ -52,6 +52,7 @@ public class IllusioOfChoice : MonoBehaviour
             FindObjectOfType<PlayerController>().enabled = false;
             FindObjectOfType<CameraController>().enabled = false;
             player.transform.LookAt(lookat.transform);
+            FindObjectOfType<CameraController>().Infuckingdialogue = true;
             InteractionTimer += Time.deltaTime;
             if (InteractionTimer >= choiceblay.clip.length && choiceB != null)
             {
@@ -93,7 +94,7 @@ public class IllusioOfChoice : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab) && inDialogue)
         {
-            SkipDialogue();
+            //SkipDialogue();
         }
         if (!choiceblay.isPlaying)
         {

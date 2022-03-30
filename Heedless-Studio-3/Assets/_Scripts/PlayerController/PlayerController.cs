@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]float TpCD;
     //------
     float stunTimer;
-    bool isStunned;
+    public bool isStunned;
     [SerializeField]float vanishTimer;
     public bool isVanished;
     //........
@@ -128,7 +128,8 @@ public class PlayerController : MonoBehaviour
         if (TelekenesisOnCD)
         {
             Magnet = false;
-            if(TelekenesisCD >= 30)
+            TelekenesisCD += Time.deltaTime;
+            if (TelekenesisCD >= 30)
             {
                 TelekenesisCD = 0;
                 TelekenesisOnCD = false;
@@ -177,11 +178,11 @@ public class PlayerController : MonoBehaviour
         //  tpObject.transform.position = hit.point;
         if (isStunned)
         {
-            GetComponent<Astar>().speed = 0;
+            FindObjectOfType<Astar>().speed = 0;
             stunTimer += Time.deltaTime;
             if (stunTimer >= 15)
             {
-                GetComponent<Astar>().speed = 20;
+                FindObjectOfType<Astar>().speed = 20;
                 isStunned = false;
                 AbilitiesInfo[1].SetActive(false);
                 AbilitiesInfo[2].SetActive(false);

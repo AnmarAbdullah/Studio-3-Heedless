@@ -167,20 +167,20 @@ public class Astar : MonoBehaviour
         if (Physics.Raycast(gb.transform.position, Player.transform.position - gb.transform.position, out PlayerRay, 100))
         {
             Debug.DrawRay(gb.transform.position, PlayerRay.point - gb.transform.position, Color.white);
-            if (PlayerRay.collider.gameObject.tag == "Player")
+            if (PlayerRay.collider.gameObject.tag == "Player" && !pplayer.isVanished && !pplayer.isStunned)
             { 
                 isChasing = true;
                 Towardstart = false;
                 gb.transform.position = Vector3.MoveTowards(gb.transform.position, cam.transform.position, speed * Time.deltaTime);
                 // this  speed is when the player is seen
-                speed = 20;
+                speed = 15;
             }
             else  
             {
                 isChasing = false;
                 Towardstart = true;
                 // this  speed is when the ghost is back to pathfinding
-                speed = 25;
+                speed = 20;
             }
         }
         RaycastHit startRay;
