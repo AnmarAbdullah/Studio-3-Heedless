@@ -40,18 +40,28 @@ public class CameraController : MonoBehaviour
 
         if (GetComponentInParent<Rigidbody>().velocity.x > 0 || GetComponentInParent<Rigidbody>().velocity.x < 0)
         {
-            /*if (!Infuckingdialogue) { anim.enabled = true; };*/
-            anim.enabled = true;
-        }
-        
+            //if (!Infuckingdialogue) 
+           // { 
+                anim.enabled = true;
+                //anim.SetBool("inDialogue", false);
+           // };
+            //anim.enabled = true;
+        }       
         else
         {
             anim.enabled = false;
+           // anim.SetBool("inDialogue", true);
         }
         
-        if(FindObjectOfType<IllusioOfChoice>().inDialogue)
+        /*if(FindObjectOfType<IllusioOfChoice>().inDialogue)
         {
+            Infuckingdialogue = true;
             anim.enabled = false;
+            anim.SetBool("inDialogue", true);
         }
+        else
+        {
+            Infuckingdialogue = false;
+        }*/
     }
 }

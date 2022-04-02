@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,7 +65,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]bool jumpscare;
 
     public AbilitiesManager abManager;
-    public GameObject[] AbilitiesInfo;
+    public GameObject BlueVig;
+    public GameObject RedVig;
+    public TextMeshProUGUI AbilitiesInfo;
     [SerializeField] int ThisScenePages;
 
     void Start()
@@ -102,17 +105,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && abManager.Telekenesis)
         {
             Magnet = true;
-            AbilitiesInfo[0].SetActive(true);
+           // AbilitiesInfo[0].SetActive(true);
         }
         if(Input.GetKeyDown(KeyCode.R) && abManager.SpeedBoost)
         {
             speedBoost = true;
-            AbilitiesInfo[0].SetActive(true);
+           // AbilitiesInfo[0].SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.F) && abManager.Teleport)
         {
             Teleporting = true;
-            AbilitiesInfo[0].SetActive(true);
+            //AbilitiesInfo[0].SetActive(true);
         }
         //setup for teleport here
 
@@ -123,83 +126,51 @@ public class PlayerController : MonoBehaviour
         if (Magnet  &&  !TelekenesisOnCD)
         {
             TeleTime += Time.deltaTime;
-            if(TeleTime > 1.5f) { Magnet = false; TeleTime = 0;  TelekenesisOnCD = true; AbilitiesInfo[0].SetActive(false); }
+            AbilityCoolDownOrDuration(TeleTime, 1.5f, Magnet);
+            if (TeleTime > 1.5f) { TelekenesisOnCD = true; } 
         }
         if (TelekenesisOnCD)
         {
-            Magnet = false;
-            TelekenesisCD += Time.deltaTime;
-            if (TelekenesisCD >= 30)
-            {
-                TelekenesisCD = 0;
-                TelekenesisOnCD = false;
-                AbilitiesInfo[0].SetActive(false);
-            }
+            AbilityCoolDownOrDuration(TelekenesisCD, 30, TelekenesisOnCD);
         }
         if (speedBoost)
         {
             speed = 35;
-            speedTimer += Time.deltaTime;
-            if(speedTimer >= 8) { speedBoost = false; speedTimer = 0; speed = 25; SpeedOnCD = true; AbilitiesInfo[0].SetActive(false); }
+            AbilityCoolDownOrDuration(speedTimer, 8, speedBoost);
+            if (speedTimer >= 8) { SpeedOnCD = true; } 
         }
         if (SpeedOnCD)
         {
             speedBoost = false;
-            SpeedCD += Time.deltaTime;
-            if(SpeedCD >= 15)
-            {
-                SpeedCD = 0;
-                SpeedOnCD = false;
-            }
+            AbilityCoolDownOrDuration(SpeedCD, 15, SpeedOnCD);
         }
         if (Teleporting)
         {
             Teleport();
-            //tpObject.transform.parent = cam.transform;
-            //tpObject.transform.LookAt(transform.position);
         }
         if (Input.GetButtonDown("Fire1") && Teleporting)
         {
-            tpObject.transform.LookAt(transform.position);
             transform.position = tpObject.transform.position;
             TPOnCD = true;
         }
         if (TPOnCD)
         {
             Teleporting = false;
-            TpCD += Time.deltaTime;
-            if(TpCD >= 15)
-            {
-                TpCD = 0;
-                TPOnCD = false;
-            }
+            AbilityCoolDownOrDuration(TpCD, 15, TPOnCD);
         }
-        
-        //  tpObject.transform.position = hit.point;
+
         if (isStunned)
         {
             FindObjectOfType<Astar>().speed = 0;
-            stunTimer += Time.deltaTime;
-            if (stunTimer >= 15)
-            {
-                FindObjectOfType<Astar>().speed = 20;
-                isStunned = false;
-                AbilitiesInfo[1].SetActive(false);
-                AbilitiesInfo[2].SetActive(false);
-            }
+            AbilityCoolDownOrDuration(stunTimer, 15, isStunned);
+        }
+        else
+        {
+            FindObjectOfType<Astar>().speed = 20;
         }
         if (isVanished)
         {
-            //vanishTimer = 0;
-            vanishTimer += Time.deltaTime;
-            if (vanishTimer > 15)
-            {
-                //GetComponent<Astar>().isChasing = false;
-                isVanished = false;
-                vanishTimer = 0;
-                AbilitiesInfo[1].SetActive(false);
-                AbilitiesInfo[3].SetActive(false);
-            }
+            AbilityCoolDownOrDuration(vanishTimer, 15, isVanished);
         }
         dist = Vector3.Distance(transform.position, Enemy.transform.position);
        // dist = Vector3.Distance(transform.position, Enemy2.transform.position);
@@ -213,7 +184,6 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out Die, 100) && !jumpscare)
             {
                 camm.enabled = false;
-                //this.enabled = false;
                 JumpscareObject.transform.position = Die.point;
                 jumpscare = true;
                 speed = 0;
@@ -270,6 +240,7 @@ public class PlayerController : MonoBehaviour
     {
         isColliding = false;
     }
+
     void Teleport()
     {
         RaycastHit hit;
@@ -288,16 +259,18 @@ public class PlayerController : MonoBehaviour
         {
             isStunned = true;
             stunTimer = 0;
-            AbilitiesInfo[1].SetActive(true);
-            AbilitiesInfo[2].SetActive(true);
+            /*AbilitiesInfo[1].SetActive(true);
+            AbilitiesInfo[2].SetActive(true);*/
+            AbilitiesInfos(RedVig, 3);
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Vanish"))
         {
             isVanished = true;
             vanishTimer = 0;
-            AbilitiesInfo[1].SetActive(true);
-            AbilitiesInfo[3].SetActive(true);
+            /* AbilitiesInfo[1].SetActive(true);
+             AbilitiesInfo[3].SetActive(true);*/
+            AbilitiesInfos(RedVig, 3);
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Interaction"))
@@ -310,6 +283,30 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<IllusioOfChoice>().inDialogue = true;
             Destroy(other.gameObject);
         }
+    }
+    void AbilitiesInfos(GameObject obj, /*string text,*/ float timer)
+    {
+        StartCoroutine(Notfication(obj, timer));
+    }
+
+    IEnumerator Notfication(GameObject obj, /*string text,*/ float time)
+    {
+        obj.SetActive(true);
+        AbilitiesInfo.gameObject.SetActive(true);
+       // AbilitiesInfo.text = text;
+        yield return new WaitForSeconds(time);
+        AbilitiesInfo.gameObject.SetActive(false);
+        obj.SetActive(false);
+    }
+
+    void AbilityCoolDownOrDuration(float abilityTimer, float time, bool ability)
+    {
+        abilityTimer += Time.deltaTime;
+        /*if(abilityTimer >= time)
+        {
+            abilityTimer = 0;
+            ability = false;
+        }*/
     }
 
 }

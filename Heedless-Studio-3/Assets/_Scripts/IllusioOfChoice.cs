@@ -51,6 +51,7 @@ public class IllusioOfChoice : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             FindObjectOfType<PlayerController>().enabled = false;
             FindObjectOfType<CameraController>().enabled = false;
+            //FindObjectOfType<CameraController>().GetComponent<Animation>().enabled = false;
             player.transform.LookAt(lookat.transform);
             FindObjectOfType<CameraController>().Infuckingdialogue = true;
             InteractionTimer += Time.deltaTime;
@@ -94,7 +95,7 @@ public class IllusioOfChoice : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab) && inDialogue)
         {
-            //SkipDialogue();
+            SkipDialogue();
         }
         if (!choiceblay.isPlaying)
         {
@@ -134,6 +135,7 @@ public class IllusioOfChoice : MonoBehaviour
         FindObjectOfType<PlayerController>().speed = 20;
         FindObjectOfType<CameraController>().enabled = true;
         FindObjectOfType<PlayerController>().rb.isKinematic = false;
+        //FindObjectOfType<CameraController>().GetComponent<Animation>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Vector3 scale = new Vector3(100, -5, 100);
