@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/Scenes/User Interface Scenes/Main Menu.unity
     guid: 0c0deecce38ca6d42ab38c7310514182
   - enabled: 1
     path: Assets/Scenes/User Interface Scenes/Introduction.unity
@@ -15,38 +15,14 @@ EditorBuildSettings:
     path: Assets/Scenes/User Interface Scenes/Controls Screen.unity
     guid: 308a299700ef6414e9fc98bb12c5006c
   - enabled: 1
-    path: Assets/Scenes/User Interface Scenes/Arrival to Ravencroft Manor - Loading.unity
-    guid: 11d8308e66c3dce49b63f3d67668ead9
-  - enabled: 1
     path: Assets/Scenes/Level Scenes/Arrival to Ravencroft Manor (Introduction Zone).unity
     guid: f832ddd40064d434e82aac9ad1b2f150
-  - enabled: 1
-    path: Assets/Scenes/User Interface Scenes/Main Hall - Loading.unity
-    guid: 1483aaaa77fc88147b1723b2e4d39480
-  - enabled: 1
-    path: Assets/Scenes/Level Scenes/Main Hall (Reward and Rest Preparation Zone).unity
-    guid: 85d34a8c5c234f04cbd87e8bbf797210
-  - enabled: 1
-    path: Assets/Scenes/User Interface Scenes/Ground Floor - Loading.unity
-    guid: 8d1b338c39d88b14d975996b2407f54b
   - enabled: 1
     path: Assets/Scenes/Level Scenes/Ground Floor (Action Zone) V2.unity
     guid: 34d988c0141009745a27bb1ac0195792
   - enabled: 1
-    path: Assets/Scenes/User Interface Scenes/Laboratory - Loading.unity
-    guid: b2494259609dfcd4b8dbf27ef5092e8c
-  - enabled: 1
     path: Assets/Scenes/Level Scenes/Laboratory (Reward and Rest Preparation Zone).unity
     guid: c10583f1358a78c45bcae238cceea884
-  - enabled: 1
-    path: Assets/Scenes/User Interface Scenes/Dungeon - Loading.unity
-    guid: 46ca9980be5d8984e9f2aa49fee542c4
-  - enabled: 1
-    path: Assets/Scenes/Level Scenes/Dungeon (Action Zone).unity
-    guid: e2da713f3195dd540abb0a203060daea
-  - enabled: 1
-    path: Assets/Scenes/User Interface Scenes/Dining Room - Loading.unity
-    guid: b18e20d92eb05214e97eee002f343867
   - enabled: 1
     path: Assets/Scenes/Level Scenes/Dining Room (Reward and Rest Preparation Zone).unity
     guid: d73e81339a74f8c45b8e5a9e3d6cf180
