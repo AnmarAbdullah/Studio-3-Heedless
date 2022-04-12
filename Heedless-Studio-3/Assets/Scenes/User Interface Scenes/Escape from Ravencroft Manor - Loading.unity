@@ -400,11 +400,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 97233266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d0ea8ebc930c874e8b6c95de09907ff, type: 3}
+  m_Script: {fileID: 11500000, guid: ab1ad11fcbe45b04e9bd269b896b9f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 12
-  scaneNameToLoad: Escape from Ravencroft Manor (Epilogue)
+  delayBeforeLoading: 10
+  timeElapsed: 0
 --- !u!4 &97233268
 Transform:
   m_ObjectHideFlags: 0

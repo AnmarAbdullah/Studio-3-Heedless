@@ -22,7 +22,7 @@ public class Pages : MonoBehaviour
         transform.Rotate(Vector3.up * Time.deltaTime * speed);
         dist = Vector3.Distance(transform.position, player.transform.position);
 
-        if (pplayer.Magnet && dist <= 40)
+        if (pplayer.Magnet && !pplayer.TelekenesisOnCD && dist <= 40)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speedtwo * Time.deltaTime);
         }

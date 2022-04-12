@@ -1,8 +1,8 @@
-//using unity.editor
+using UnityEditor;
 using UnityEngine;
 using System.Linq;
 
-public class AIWaypointTool //: EditorWindow
+public class AIWaypointTool //: //EditorWindow
 {
    /* Node Waypoint;
    // Node[] neighbors;
@@ -17,6 +17,9 @@ public class AIWaypointTool //: EditorWindow
     bool addedLeft;
     bool added;
 
+
+    bool isBuilding;
+
     [MenuItem("OurTools / AI Waypoints")]
     public static void Int()
     {
@@ -25,6 +28,9 @@ public class AIWaypointTool //: EditorWindow
     RaycastHit hit;
     private void OnGUI()
     {
+
+
+
         Waypoint = EditorGUILayout.ObjectField("WayPoint", Waypoint, typeof(Node), true) as Node;
         //RaycastHit hit;
         if (Physics.Raycast(Waypoint.transform.position, Waypoint.transform.forward, out hit, 1000))
@@ -105,11 +111,18 @@ public class AIWaypointTool //: EditorWindow
         {
             SpawnWaypoint();
         }
-    }*/
+        if(GUILayout.Button("Start Building"))
+        {
+            Build();
+        }
+    }
 
+    void Build()
+    {
 
+    }
 
-    /*void SpawnWaypoint()
+    void SpawnWaypoint()
     {
         addedRight = false;
         addedLeft = false;
@@ -120,5 +133,6 @@ public class AIWaypointTool //: EditorWindow
         {
             Debug.LogError("Add Waypoints");
         }
-    }*/
+    }
+   */
 }

@@ -27,7 +27,7 @@ public class IllusioOfChoice : MonoBehaviour
     public bool inDialogue;
     public bool noChoice;
     public bool hasTp;
-    public AbilitiesManager ABManage;
+    //public AbilitiesManager ABManage;
     Animation anim;
     public GameObject cam;
     public ParticleSystem particle;
@@ -41,6 +41,7 @@ public class IllusioOfChoice : MonoBehaviour
     }
     private void Update()
     {
+        //Debug.LogError(ABManage.SpeedBoost);
         if (inDialogue)
         {
             Vector3 scale = new Vector3(100, 95.90824f, 100);
@@ -114,8 +115,8 @@ public class IllusioOfChoice : MonoBehaviour
         choiceblay.clip = choiceA.GetComponent<AudioSource>().clip;
         choiceblay.Play();
         removeButtons();
-        if (abilityChoicer) { ABManage.SpeedBoost = true; }
-        if (ABManage.SpeedBoost && hasTp) ABManage.Teleport = true;
+        /*if (abilityChoicer) { ABManage.SpeedBoost = true; }
+        if (ABManage.SpeedBoost && hasTp) ABManage.Teleport = true;*/
     }
     public void playChoiceB()
     {
@@ -124,8 +125,8 @@ public class IllusioOfChoice : MonoBehaviour
         choiceblay.clip = choiceB.GetComponent<AudioSource>().clip;
         choiceblay.Play();
         removeButtons();
-        if(abilityChoicer)ABManage.Telekenesis = true;
-        if(ABManage.Telekenesis && hasTp) ABManage.Teleport = true;
+        /*if(abilityChoicer)ABManage.Telekenesis = true;
+        if(ABManage.Telekenesis && hasTp) ABManage.Teleport = true;*/
     }
     //create new function to unlock tp
     void endDialogue()
@@ -159,7 +160,7 @@ public class IllusioOfChoice : MonoBehaviour
             //GetComponent<AudioSource>().time += 5;
             choiceblay.time += 5;
             InteractionTimer += 5;
-        particleTimer += 5;
+            particleTimer += 5;
             //GetComponent<AudioSource>().time += 5;  
         //}
     }

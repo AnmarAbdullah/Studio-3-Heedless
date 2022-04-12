@@ -10,13 +10,12 @@ public class PlayerController : MonoBehaviour
     float moveForward;
     float moveAside;
     bool FlashLight;
+    bool mapp;
     public Light flashlight;
     public Animator anim;
     public Camera cam;
     public Transform Enemy;
-    public Transform Enemy2;
     public Transform EnemyRespawn;
-    public Transform EnemyRespawn2;
     public TextMesh PageCounterText;
     public TextMesh PlayerLifeText;
 
@@ -31,7 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float TeleTime;
     [SerializeField] public bool Magnet;
     float TelekenesisCD;
-    bool TelekenesisOnCD;
+    public bool TelekenesisOnCD;
     //-----
     public float speedTimer;
     public bool speedBoost;
@@ -52,9 +51,6 @@ public class PlayerController : MonoBehaviour
     public Pages pages;
     public Rigidbody rb;
 
-    [SerializeField] int collisions;
-    [SerializeField] public bool isColliding;
-
     public GameObject JumpscareObject;
     [SerializeField]float deathTimer;
     public CameraController camm;
@@ -64,10 +60,13 @@ public class PlayerController : MonoBehaviour
     public float dist2;
     [SerializeField]bool jumpscare;
 
-    public AbilitiesManager abManager;
+    //public AbilitiesManager abManager;
     public GameObject BlueVig;
     public GameObject RedVig;
+    public GameObject Map;
     public TextMeshProUGUI AbilitiesInfo;
+    public TextMeshProUGUI AbilitiesInfo2;
+    TextMeshProUGUI nulll;
     [SerializeField] int ThisScenePages;
 
     void Start()
@@ -102,22 +101,27 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
         }
-        if (Input.GetKeyDown(KeyCode.E) && abManager.Telekenesis)
+        if (Input.GetKeyDown(KeyCode.E) /*&& abManager.Telekenesis*/)
         {
             Magnet = true;
            // AbilitiesInfo[0].SetActive(true);
         }
-        if(Input.GetKeyDown(KeyCode.R) && abManager.SpeedBoost)
+        if(Input.GetKeyDown(KeyCode.R) /*&& abManager.SpeedBoost*/)
         {
             speedBoost = true;
            // AbilitiesInfo[0].SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.F) && abManager.Teleport)
+        if (Input.GetKeyDown(KeyCode.F) && !TPOnCD /*&& abManager.Teleport*/)
         {
             Teleporting = true;
             //AbilitiesInfo[0].SetActive(true);
         }
-        //setup for teleport here
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (!Map.activeInHierarchy) { Map.SetActive(true); } 
+            else { Map.SetActive(false); }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)) { Map.SetActive(false); }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -126,43 +130,48 @@ public class PlayerController : MonoBehaviour
         if (Magnet  &&  !TelekenesisOnCD)
         {
             TeleTime += Time.deltaTime;
-            AbilityCoolDownOrDuration(TeleTime, 1.5f, Magnet);
+            AbilityCoolDownOrDuration(ref TeleTime, 1.5f, ref Magnet);
+            AbilitiesInfos(ref BlueVig, ref nulll, 1.5f);
             if (TeleTime > 1.5f) { TelekenesisOnCD = true; } 
         }
         if (TelekenesisOnCD)
         {
-            AbilityCoolDownOrDuration(TelekenesisCD, 30, TelekenesisOnCD);
+            AbilityCoolDownOrDuration(ref TelekenesisCD, 30, ref TelekenesisOnCD);
         }
-        if (speedBoost)
+        if (speedBoost && !SpeedOnCD)
         {
             speed = 35;
-            AbilityCoolDownOrDuration(speedTimer, 8, speedBoost);
-            if (speedTimer >= 8) { SpeedOnCD = true; } 
+            AbilityCoolDownOrDuration(ref speedTimer, 8, ref speedBoost);
+            if (speedTimer >= 8) { SpeedOnCD = true; speed = 20; }
+            AbilitiesInfos(ref BlueVig, ref nulll, 8);
         }
         if (SpeedOnCD)
         {
             speedBoost = false;
-            AbilityCoolDownOrDuration(SpeedCD, 15, SpeedOnCD);
+            AbilityCoolDownOrDuration(ref SpeedCD, 15, ref SpeedOnCD);
         }
         if (Teleporting)
         {
             Teleport();
+            AbilitiesInfos(ref BlueVig, ref nulll, 10000);
         }
         if (Input.GetButtonDown("Fire1") && Teleporting)
         {
             transform.position = tpObject.transform.position;
             TPOnCD = true;
+            BlueVig.SetActive(false);
         }
         if (TPOnCD)
         {
             Teleporting = false;
-            AbilityCoolDownOrDuration(TpCD, 15, TPOnCD);
+            tpObject.SetActive(false);
+            AbilityCoolDownOrDuration(ref TpCD, 15, ref TPOnCD);
         }
 
         if (isStunned)
         {
             FindObjectOfType<Astar>().speed = 0;
-            AbilityCoolDownOrDuration(stunTimer, 15, isStunned);
+            AbilityCoolDownOrDuration(ref stunTimer, 15, ref isStunned);
         }
         else
         {
@@ -170,7 +179,7 @@ public class PlayerController : MonoBehaviour
         }
         if (isVanished)
         {
-            AbilityCoolDownOrDuration(vanishTimer, 15, isVanished);
+            AbilityCoolDownOrDuration(ref vanishTimer, 15, ref isVanished);
         }
         dist = Vector3.Distance(transform.position, Enemy.transform.position);
        // dist = Vector3.Distance(transform.position, Enemy2.transform.position);
@@ -195,7 +204,6 @@ public class PlayerController : MonoBehaviour
                 camm.enabled = true;
                 speed = 0;
                 Enemy.transform.position = EnemyRespawn.transform.position;
-                Enemy2.transform.position = EnemyRespawn2.transform.position;
             }
         }
         else
@@ -231,19 +239,12 @@ public class PlayerController : MonoBehaviour
         PlayerLifeText.text = PlayerLifes.ToString();
 
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        isColliding = true;
-        collisions++;
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        isColliding = false;
-    }
 
     void Teleport()
     {
         RaycastHit hit;
+
+        tpObject.SetActive(true);
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100) && !TPOnCD)
         {
             if (hit.collider.gameObject.tag == "Floor")
@@ -251,7 +252,7 @@ public class PlayerController : MonoBehaviour
                 tpObject.transform.position = hit.point;
             }
         }
-        tpObject.transform.LookAt(cam.transform.position);
+        //tpObject.transform.LookAt(cam.transform.position);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -261,7 +262,7 @@ public class PlayerController : MonoBehaviour
             stunTimer = 0;
             /*AbilitiesInfo[1].SetActive(true);
             AbilitiesInfo[2].SetActive(true);*/
-            AbilitiesInfos(RedVig, 3);
+            AbilitiesInfos(ref RedVig, ref AbilitiesInfo2, 15);
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Vanish"))
@@ -270,7 +271,7 @@ public class PlayerController : MonoBehaviour
             vanishTimer = 0;
             /* AbilitiesInfo[1].SetActive(true);
              AbilitiesInfo[3].SetActive(true);*/
-            AbilitiesInfos(RedVig, 3);
+            AbilitiesInfos(ref RedVig, ref AbilitiesInfo, 15);
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("Interaction"))
@@ -284,29 +285,31 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    void AbilitiesInfos(GameObject obj, /*string text,*/ float timer)
+    void AbilitiesInfos(ref GameObject obj, ref TextMeshProUGUI obj2, float timer)
     {
-        StartCoroutine(Notfication(obj, timer));
+        StartCoroutine(Notfication(obj,obj2, timer));
     }
 
-    IEnumerator Notfication(GameObject obj, /*string text,*/ float time)
+    IEnumerator Notfication(GameObject obj, TextMeshProUGUI obj2, float time)
     {
         obj.SetActive(true);
-        AbilitiesInfo.gameObject.SetActive(true);
-       // AbilitiesInfo.text = text;
+        //AbilitiesInfo.gameObject.SetActive(true);
+        // AbilitiesInfo.text = text;
+        obj2.gameObject.SetActive(true);
         yield return new WaitForSeconds(time);
-        AbilitiesInfo.gameObject.SetActive(false);
+       // AbilitiesInfo.gameObject.SetActive(false);
         obj.SetActive(false);
+        obj2.gameObject.SetActive(false);
     }
 
-    void AbilityCoolDownOrDuration(float abilityTimer, float time, bool ability)
+    void AbilityCoolDownOrDuration(ref float abilityTimer, float time, ref bool ability)
     {
         abilityTimer += Time.deltaTime;
-        /*if(abilityTimer >= time)
+        if(abilityTimer >= time)
         {
-            abilityTimer = 0;
             ability = false;
-        }*/
+            abilityTimer = 0;
+        }
     }
 
 }
