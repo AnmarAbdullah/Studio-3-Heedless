@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pages : MonoBehaviour
 {
     [SerializeField] int speed;
-    [SerializeField] int speedtwo = 20;
+    [SerializeField] int speedtwo = 20; // How fast the pages come to the player, original value = 20
     [SerializeField] float dist;
     [SerializeField] Transform player;
     PlayerController pplayer;

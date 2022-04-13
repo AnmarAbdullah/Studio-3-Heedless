@@ -34,7 +34,7 @@ public class IllusioOfChoice : MonoBehaviour
     float particleTimer;
     private void Start()
     {
-        player = player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("Player").transform;
         choiceblay = GetComponent<AudioSource>();
         anim = GetComponent<Animation>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");

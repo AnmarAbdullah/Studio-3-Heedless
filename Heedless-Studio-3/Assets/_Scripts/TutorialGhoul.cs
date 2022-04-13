@@ -9,7 +9,7 @@ public class TutorialGhoul : MonoBehaviour
     public GameObject RespawnGhoul;
     public GameObject RespawnPlayer;
 
-    float speed = 6;
+    float speed = 20; // Original Value = 6
     float dist;
 
     private void Start()
@@ -25,7 +25,7 @@ public class TutorialGhoul : MonoBehaviour
         dist = Vector3.Distance(transform.position, player.transform.position);
         if(dist <= 3)
         {
-            player.transform.position = RespawnPlayer.transform.position;
+            pplayer.transform.position = RespawnPlayer.transform.position;
             transform.position = RespawnGhoul.transform.position;
         }
         

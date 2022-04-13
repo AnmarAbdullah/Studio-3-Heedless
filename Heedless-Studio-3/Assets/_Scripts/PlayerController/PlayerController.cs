@@ -140,15 +140,15 @@ public class PlayerController : MonoBehaviour
         }
         if (speedBoost && !SpeedOnCD)
         {
-            speed = 35;
+            speed = 40;
             AbilityCoolDownOrDuration(ref speedTimer, 8, ref speedBoost);
-            if (speedTimer >= 8) { SpeedOnCD = true; speed = 20; }
+            if (speedTimer >= 10) { SpeedOnCD = true; speed = 20; }
             AbilitiesInfos(ref BlueVig, ref nulll, 8);
         }
         if (SpeedOnCD)
         {
             speedBoost = false;
-            AbilityCoolDownOrDuration(ref SpeedCD, 15, ref SpeedOnCD);
+            AbilityCoolDownOrDuration(ref SpeedCD, 20, ref SpeedOnCD);
         }
         if (Teleporting)
         {
