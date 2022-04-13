@@ -229,7 +229,7 @@ public class Astar : MonoBehaviour
     {
         gb.transform.position = Vector3.MoveTowards(gb.transform.position, pathlist[pathIndex + index].transform.position, speed * Time.deltaTime);
         float dist2 = Vector3.Distance(gb.transform.position, pathlist[pathIndex + index].transform.position);
-        if (dist <= 1f) // ohhhhhh pathindex is becoming more than the  path list
+        if (dist <= 1f)
         {
             //path += 1;
         }

@@ -24,15 +24,6 @@ public class Node : MonoBehaviour , IComparable
 
     public Node parent;
 
-    private void Update()
-    {
-        //float dist = Vector3.Distance(transform.position, Player.transform.position);
-    }
-    void FindStartingNode()
-    {
-
-    }
-
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");

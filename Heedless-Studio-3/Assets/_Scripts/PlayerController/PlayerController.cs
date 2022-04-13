@@ -23,26 +23,31 @@ public class PlayerController : MonoBehaviour
     
     public int pageCounter;
     AudioSource music;
+    public AudioSource consumableSFX;
 
 
     //abilities manager....
+   public ParticleSystem abilityEarn;
     //------
+    public bool TeleEarned = true;
     [SerializeField] float TeleTime;
     [SerializeField] public bool Magnet;
     float TelekenesisCD;
     public bool TelekenesisOnCD;
     //-----
+    public bool speedEarned = true;
     public float speedTimer;
     public bool speedBoost;
     float SpeedCD;
     bool SpeedOnCD;
     //-----
     [SerializeField]bool Teleporting = true;
+    public bool TpEarned = true;
     public GameObject tpObject;
     bool TPOnCD;
     [SerializeField]float TpCD;
     //------
-    float stunTimer;
+    [SerializeField]float stunTimer;
     public bool isStunned;
     [SerializeField]float vanishTimer;
     public bool isVanished;
@@ -66,8 +71,10 @@ public class PlayerController : MonoBehaviour
     public GameObject Map;
     public TextMeshProUGUI AbilitiesInfo;
     public TextMeshProUGUI AbilitiesInfo2;
-    TextMeshProUGUI nulll;
+    public TextMeshProUGUI nulll;
     [SerializeField] int ThisScenePages;
+
+    Astar astar;
 
     void Start()
     {
@@ -77,6 +84,7 @@ public class PlayerController : MonoBehaviour
         pages = FindObjectOfType<Pages>();
         camm = GetComponentInChildren<CameraController>();
         music = GetComponent<AudioSource>();
+        astar = FindObjectOfType<Astar>();
     }
 
     // Update is called once per frame
@@ -88,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 direction = (transform.forward * moveForward + transform.right* moveAside).normalized;
         rb.velocity = direction * speed;
+        rb.velocity = new Vector3(rb.velocity.x, -9.81f, rb.velocity.z);
 ;        
         if (rb.velocity.x > 30 || rb.velocity.z > 30)
         {
@@ -101,22 +110,22 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
         }
-        if (Input.GetKeyDown(KeyCode.E) /*&& abManager.Telekenesis*/)
+        if (Input.GetKeyDown(KeyCode.E) && TeleEarned/*&& abManager.Telekenesis*/)
         {
             Magnet = true;
            // AbilitiesInfo[0].SetActive(true);
         }
-        if(Input.GetKeyDown(KeyCode.R) /*&& abManager.SpeedBoost*/)
+        if(Input.GetKeyDown(KeyCode.R) && speedEarned /*&& abManager.SpeedBoost*/)
         {
             speedBoost = true;
            // AbilitiesInfo[0].SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.F) && !TPOnCD /*&& abManager.Teleport*/)
+        if (Input.GetKeyDown(KeyCode.F) && !TPOnCD && TpEarned /*&& abManager.Teleport*/)
         {
             Teleporting = true;
             //AbilitiesInfo[0].SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetMouseButtonDown(1))
         {
             if (!Map.activeInHierarchy) { Map.SetActive(true); } 
             else { Map.SetActive(false); }
@@ -132,7 +141,7 @@ public class PlayerController : MonoBehaviour
             TeleTime += Time.deltaTime;
             AbilityCoolDownOrDuration(ref TeleTime, 1.5f, ref Magnet);
             AbilitiesInfos(ref BlueVig, ref nulll, 1.5f);
-            if (TeleTime > 1.5f) { TelekenesisOnCD = true; } 
+            if (TeleTime >= 1.4f) { TelekenesisOnCD = true; } 
         }
         if (TelekenesisOnCD)
         {
@@ -142,7 +151,7 @@ public class PlayerController : MonoBehaviour
         {
             speed = 40;
             AbilityCoolDownOrDuration(ref speedTimer, 8, ref speedBoost);
-            if (speedTimer >= 10) { SpeedOnCD = true; speed = 20; }
+          //  if (speedTimer >= 10) { speed = 20;  SpeedOnCD = true; }
             AbilitiesInfos(ref BlueVig, ref nulll, 8);
         }
         if (SpeedOnCD)
@@ -164,19 +173,21 @@ public class PlayerController : MonoBehaviour
         if (TPOnCD)
         {
             Teleporting = false;
-            tpObject.SetActive(false);
+            tpObject.gameObject.SetActive(false);
             AbilityCoolDownOrDuration(ref TpCD, 15, ref TPOnCD);
         }
 
         if (isStunned)
         {
-            FindObjectOfType<Astar>().speed = 0;
+            if(astar != null)astar.speed = 0;
             AbilityCoolDownOrDuration(ref stunTimer, 15, ref isStunned);
         }
+
         else
         {
-            FindObjectOfType<Astar>().speed = 20;
+            if(astar != null) astar.speed = 20;
         }
+
         if (isVanished)
         {
             AbilityCoolDownOrDuration(ref vanishTimer, 15, ref isVanished);
@@ -244,7 +255,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        tpObject.SetActive(true);
+        tpObject.gameObject.SetActive(true);
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100) && !TPOnCD)
         {
             if (hit.collider.gameObject.tag == "Floor")
@@ -254,6 +265,20 @@ public class PlayerController : MonoBehaviour
         }
         //tpObject.transform.LookAt(cam.transform.position);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            isVanished = true;
+        } 
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 6)
+        {
+            isVanished = false;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Stun"))
@@ -262,6 +287,7 @@ public class PlayerController : MonoBehaviour
             stunTimer = 0;
             /*AbilitiesInfo[1].SetActive(true);
             AbilitiesInfo[2].SetActive(true);*/
+            consumableSFX.Play();
             AbilitiesInfos(ref RedVig, ref AbilitiesInfo2, 15);
             Destroy(other.gameObject);
         }
@@ -271,6 +297,7 @@ public class PlayerController : MonoBehaviour
             vanishTimer = 0;
             /* AbilitiesInfo[1].SetActive(true);
              AbilitiesInfo[3].SetActive(true);*/
+            consumableSFX.Play();
             AbilitiesInfos(ref RedVig, ref AbilitiesInfo, 15);
             Destroy(other.gameObject);
         }
@@ -293,11 +320,9 @@ public class PlayerController : MonoBehaviour
     IEnumerator Notfication(GameObject obj, TextMeshProUGUI obj2, float time)
     {
         obj.SetActive(true);
-        //AbilitiesInfo.gameObject.SetActive(true);
-        // AbilitiesInfo.text = text;
-        obj2.gameObject.SetActive(true);
+
+        if (obj2 != null)obj2.gameObject.SetActive(true);
         yield return new WaitForSeconds(time);
-       // AbilitiesInfo.gameObject.SetActive(false);
         obj.SetActive(false);
         obj2.gameObject.SetActive(false);
     }

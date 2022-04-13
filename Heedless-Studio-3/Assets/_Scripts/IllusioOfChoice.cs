@@ -61,6 +61,10 @@ public class IllusioOfChoice : MonoBehaviour
                 buttons[0].SetActive(true);
                 buttons[1].SetActive(true);
             }
+            else if (buttons == null&& InteractionTimer >= choiceblay.clip.length)
+            {
+                endDialogue();
+            }
 
            // cam.GetComponent<Animator>().enabled = false; 
             if (choicechosen)
