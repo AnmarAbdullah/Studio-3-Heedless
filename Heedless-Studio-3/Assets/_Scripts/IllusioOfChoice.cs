@@ -12,7 +12,7 @@ public class IllusioOfChoice : MonoBehaviour
 
     public float InteractionTimer;
 
-    [SerializeField]bool choicechosen;
+    [SerializeField] bool choicechosen;
     [SerializeField] bool abilityChoicer;
     Transform player;
 
@@ -32,12 +32,15 @@ public class IllusioOfChoice : MonoBehaviour
     public GameObject cam;
     public ParticleSystem particle;
     float particleTimer;
+    CameraController cam2;
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         choiceblay = GetComponent<AudioSource>();
         anim = GetComponent<Animation>();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
+        cam2 = FindObjectOfType<CameraController>();
     }
     private void Update()
     {
@@ -46,6 +49,7 @@ public class IllusioOfChoice : MonoBehaviour
         {
             Vector3 scale = new Vector3(100, 95.90824f, 100);
             transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation(cam2.transform.position - transform.position);
             //anim.Play();
             //InterAction();
             Cursor.visible = true;
@@ -61,12 +65,12 @@ public class IllusioOfChoice : MonoBehaviour
                 buttons[0].SetActive(true);
                 buttons[1].SetActive(true);
             }
-            else if (buttons == null&& InteractionTimer >= choiceblay.clip.length)
+            else if (buttons == null && InteractionTimer >= choiceblay.clip.length)
             {
                 endDialogue();
             }
 
-           // cam.GetComponent<Animator>().enabled = false; 
+            // cam.GetComponent<Animator>().enabled = false; 
             if (choicechosen)
             {
                 InteractionTimer = 0;
@@ -77,15 +81,15 @@ public class IllusioOfChoice : MonoBehaviour
                 Destroy(transform.gameObject, 2);
                 player.rotation = Quaternion.Euler(0, 0, 0);
             }
-            if(noChoice && !choiceblay.isPlaying)
+            if (noChoice && !choiceblay.isPlaying)
             {
                 endDialogue();
                 player.rotation = Quaternion.Euler(0, 0, 0);
             }
-            if(abilityChoicer && choicechosen)
+            if (abilityChoicer && choicechosen)
             {
                 particleTimer += Time.deltaTime;
-                if(particleTimer >= 8)
+                if (particleTimer >= 8)
                 {
                     particle.Play();
                 }
@@ -161,11 +165,11 @@ public class IllusioOfChoice : MonoBehaviour
     {
         // if (choicebla.isPlaying)
         // {
-            //GetComponent<AudioSource>().time += 5;
-            choiceblay.time += 5;
-            InteractionTimer += 5;
-            particleTimer += 5;
-            //GetComponent<AudioSource>().time += 5;  
+        //GetComponent<AudioSource>().time += 5;
+        choiceblay.time += 5;
+        InteractionTimer += 5;
+        particleTimer += 5;
+        //GetComponent<AudioSource>().time += 5;  
         //}
     }
 

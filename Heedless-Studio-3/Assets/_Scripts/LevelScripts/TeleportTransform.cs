@@ -8,7 +8,7 @@ public class TeleportTransform : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            collider.transform.position = new Vector3(-431f, 1.74f, -20);
+            collider.transform.position = new Vector3(-862f, 3.48f, -40);
         }
     }
 }

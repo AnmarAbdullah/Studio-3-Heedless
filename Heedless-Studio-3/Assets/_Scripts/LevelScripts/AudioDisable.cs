@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioDisable : MonoBehaviour
 {
     public AudioClip Music;
-    private AudioSource Audio;
+    public AudioSource Audio;
 
     private void OnTriggerEnter(Collider Player)
     {
