@@ -28,6 +28,7 @@ public class Astar : MonoBehaviour
     [SerializeField]bool other;
     public bool isChasing;
     public GameObject cam;
+    Abilities ability;
     //[SerializeField]float[] dist;
 
 
@@ -42,6 +43,7 @@ public class Astar : MonoBehaviour
         //openlist.Add(startingNode);
         allNodes = FindObjectsOfType<Node>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        ability = FindObjectOfType<Abilities>();
         FindStartingNode(allNodes);
         FindTargetNode(allNodes);
         Findpath();
@@ -167,20 +169,20 @@ public class Astar : MonoBehaviour
         if (Physics.Raycast(gb.transform.position, Player.transform.position - gb.transform.position, out PlayerRay, 100))
         {
             Debug.DrawRay(gb.transform.position, PlayerRay.point - gb.transform.position, Color.white);
-            if (PlayerRay.collider.gameObject.tag == "Player" && !pplayer.isVanished && !pplayer.isStunned)
+            if (PlayerRay.collider.gameObject.tag == "Player" && !ability.isVanished && !ability.isStunned)
             { 
                 isChasing = true;
                 Towardstart = false;
                 gb.transform.position = Vector3.MoveTowards(gb.transform.position, cam.transform.position, speed * Time.deltaTime);
                 // this  speed is when the player is seen
-                speed = 18;
+                speed = 10;
             }
             else  
             {
                 isChasing = false;
                 Towardstart = true;
                 // this  speed is when the ghost is back to pathfinding
-                speed = 20;
+                speed = 15;
             }
         }
         RaycastHit startRay;
@@ -206,7 +208,7 @@ public class Astar : MonoBehaviour
                 allNodes[i].isVisited = false;
             }
             FindStartingNode(allNodes);
-            if (pplayer.isVanished)
+            if (ability.isVanished)
             {
                 targetNode = allNodes[UnityEngine.Random.Range(0, allNodes.Length)];
             }

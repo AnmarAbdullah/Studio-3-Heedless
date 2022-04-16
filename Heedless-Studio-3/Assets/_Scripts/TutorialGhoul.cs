@@ -8,6 +8,7 @@ public class TutorialGhoul : MonoBehaviour
     PlayerController pplayer;
     public GameObject RespawnGhoul;
     public GameObject RespawnPlayer;
+    Abilities ability;
 
     float speed = 20; // Original Value = 6
     float dist;
@@ -16,6 +17,7 @@ public class TutorialGhoul : MonoBehaviour
     {
         player = FindObjectOfType<CameraController>();
         pplayer = FindObjectOfType<PlayerController>();
+        ability = FindObjectOfType<Abilities>();
     }
 
     void Update()
@@ -29,7 +31,7 @@ public class TutorialGhoul : MonoBehaviour
             transform.position = RespawnGhoul.transform.position;
         }
         
-        if (pplayer.isStunned)
+        if (ability.isStunned)
         {
             speed = 0;
         }

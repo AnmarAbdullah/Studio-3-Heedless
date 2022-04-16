@@ -22,36 +22,8 @@ public class PlayerController : MonoBehaviour
     public int PlayerLifes = 5;
     
     public int pageCounter;
-    AudioSource music;
-    public AudioSource consumableSFX;
+    [SerializeField]AudioSource music;
 
-
-    //abilities manager....
-   public ParticleSystem abilityEarn;
-    //------
-    public bool TeleEarned = true;
-    [SerializeField] float TeleTime;
-    [SerializeField] public bool Magnet;
-    float TelekenesisCD;
-    public bool TelekenesisOnCD;
-    //-----
-    public bool speedEarned = true;
-    public float speedTimer;
-    public bool speedBoost;
-    float SpeedCD;
-    bool SpeedOnCD;
-    //-----
-    [SerializeField]bool Teleporting = true;
-    public bool TpEarned = true;
-    public GameObject tpObject;
-    bool TPOnCD;
-    [SerializeField]float TpCD;
-    //------
-    [SerializeField]float stunTimer;
-    public bool isStunned;
-    [SerializeField]float vanishTimer;
-    public bool isVanished;
-    //........
 
     public Pages pages;
     public Rigidbody rb;
@@ -64,26 +36,22 @@ public class PlayerController : MonoBehaviour
     public float dist;
     public float dist2;
     [SerializeField]bool jumpscare;
-
-    //public AbilitiesManager abManager;
-    public GameObject BlueVig;
-    public GameObject RedVig;
     public GameObject Map;
-    public TextMeshProUGUI AbilitiesInfo;
-    public TextMeshProUGUI AbilitiesInfo2;
-    public TextMeshProUGUI nulll;
+
     [SerializeField] int ThisScenePages;
+    Abilities ability;
 
     Astar astar;
 
     void Start()
     {
+        ability = GetComponent<Abilities>();
         rb = GetComponent<Rigidbody>();
         //flashlight = GetComponent<Light>();
         anim = GetComponent<Animator>();
         pages = FindObjectOfType<Pages>();
         camm = GetComponentInChildren<CameraController>();
-        music = GetComponent<AudioSource>();
+       // music = this.GetComponent<AudioSource>();
         astar = FindObjectOfType<Astar>();
     }
 
@@ -110,24 +78,9 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isRunning", false);
         }
-        if (Input.GetKeyDown(KeyCode.E) && TeleEarned/*&& abManager.Telekenesis*/)
-        {
-            Magnet = true;
-           // AbilitiesInfo[0].SetActive(true);
-        }
-        if(Input.GetKeyDown(KeyCode.R) && speedEarned /*&& abManager.SpeedBoost*/)
-        {
-            speedBoost = true;
-           // AbilitiesInfo[0].SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.F) && !TPOnCD && TpEarned /*&& abManager.Teleport*/)
-        {
-            Teleporting = true;
-            //AbilitiesInfo[0].SetActive(true);
-        }
         if (Input.GetMouseButtonDown(1))
         {
-            if (!Map.activeInHierarchy) { Map.SetActive(true); } 
+            if (!Map.activeInHierarchy) { Map.SetActive(true); }
             else { Map.SetActive(false); }
         }
         if (Input.GetKeyDown(KeyCode.Escape)) { Map.SetActive(false); }
@@ -136,65 +89,10 @@ public class PlayerController : MonoBehaviour
         {
             flashlight.enabled = !flashlight.enabled;
         }
-        if (Magnet  &&  !TelekenesisOnCD)
-        {
-            TeleTime += Time.deltaTime;
-            AbilityCoolDownOrDuration(ref TeleTime, 1.5f, ref Magnet);
-            AbilitiesInfos(ref BlueVig, ref nulll, 1.5f);
-            if (TeleTime >= 1.4f) { TelekenesisOnCD = true; } 
-        }
-        if (TelekenesisOnCD)
-        {
-            AbilityCoolDownOrDuration(ref TelekenesisCD, 30, ref TelekenesisOnCD);
-        }
-        if (speedBoost && !SpeedOnCD)
-        {
-            speed = 40;
-            AbilityCoolDownOrDuration(ref speedTimer, 8, ref speedBoost);
-          //  if (speedTimer >= 10) { speed = 20;  SpeedOnCD = true; }
-            AbilitiesInfos(ref BlueVig, ref nulll, 8);
-        }
-        if (SpeedOnCD)
-        {
-            speedBoost = false;
-            AbilityCoolDownOrDuration(ref SpeedCD, 20, ref SpeedOnCD);
-        }
-        if (Teleporting)
-        {
-            Teleport();
-            AbilitiesInfos(ref BlueVig, ref nulll, 10000);
-        }
-        if (Input.GetButtonDown("Fire1") && Teleporting)
-        {
-            transform.position = tpObject.transform.position;
-            TPOnCD = true;
-            BlueVig.SetActive(false);
-        }
-        if (TPOnCD)
-        {
-            Teleporting = false;
-            tpObject.gameObject.SetActive(false);
-            AbilityCoolDownOrDuration(ref TpCD, 15, ref TPOnCD);
-        }
-
-        if (isStunned)
-        {
-            if(astar != null)astar.speed = 0;
-            AbilityCoolDownOrDuration(ref stunTimer, 15, ref isStunned);
-        }
-
-        else
-        {
-            if(astar != null) astar.speed = 20;
-        }
-
-        if (isVanished)
-        {
-            AbilityCoolDownOrDuration(ref vanishTimer, 15, ref isVanished);
-        }
+       
         dist = Vector3.Distance(transform.position, Enemy.transform.position);
        // dist = Vector3.Distance(transform.position, Enemy2.transform.position);
-        if (dist <= 5 /*|| dist2 <= 5*/)
+        if (dist <= 5)
         {
             Caught = true;
             JumpscareObject.gameObject.SetActive(true);
@@ -223,7 +121,7 @@ public class PlayerController : MonoBehaviour
             Caught = false;
             jumpscare = false;
             camm.enabled = true;
-            if (speedBoost) speed = 35;
+            if (ability.speedBoost) speed = 35;
             else { speed = 20; };
         }
         
@@ -234,13 +132,14 @@ public class PlayerController : MonoBehaviour
             JumpscareObject.transform.position = Vector3.MoveTowards(JumpscareObject.transform.position, cam.transform.position, 50 * Time.deltaTime);
         }
 
-        if(pageCounter == ThisScenePages)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        if(pageCounter >= ThisScenePages - 15)
+        if (pageCounter >= 230)
         {
             music.Play();
+            Debug.Log("hello???????????");
+        }
+        if (pageCounter == ThisScenePages)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         if (PlayerLifes == 0)
         {
@@ -250,57 +149,8 @@ public class PlayerController : MonoBehaviour
         PlayerLifeText.text = PlayerLifes.ToString();
 
     }
-
-    void Teleport()
-    {
-        RaycastHit hit;
-
-        tpObject.gameObject.SetActive(true);
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 100) && !TPOnCD)
-        {
-            if (hit.collider.gameObject.tag == "Floor")
-            {
-                tpObject.transform.position = hit.point;
-            }
-        }
-        //tpObject.transform.LookAt(cam.transform.position);
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.layer == 6)
-        {
-            isVanished = true;
-        } 
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.layer == 6)
-        {
-            isVanished = false;
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Stun"))
-        {
-            isStunned = true;
-            stunTimer = 0;
-            /*AbilitiesInfo[1].SetActive(true);
-            AbilitiesInfo[2].SetActive(true);*/
-            consumableSFX.Play();
-            AbilitiesInfos(ref RedVig, ref AbilitiesInfo2, 15);
-            Destroy(other.gameObject);
-        }
-        if (other.gameObject.CompareTag("Vanish"))
-        {
-            isVanished = true;
-            vanishTimer = 0;
-            /* AbilitiesInfo[1].SetActive(true);
-             AbilitiesInfo[3].SetActive(true);*/
-            consumableSFX.Play();
-            AbilitiesInfos(ref RedVig, ref AbilitiesInfo, 15);
-            Destroy(other.gameObject);
-        }
         if (other.gameObject.CompareTag("Interaction"))
         {
             speed = 0;
@@ -312,29 +162,4 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    void AbilitiesInfos(ref GameObject obj, ref TextMeshProUGUI obj2, float timer)
-    {
-        StartCoroutine(Notfication(obj,obj2, timer));
-    }
-
-    IEnumerator Notfication(GameObject obj, TextMeshProUGUI obj2, float time)
-    {
-        obj.SetActive(true);
-
-        if (obj2 != null)obj2.gameObject.SetActive(true);
-        yield return new WaitForSeconds(time);
-        obj.SetActive(false);
-        obj2.gameObject.SetActive(false);
-    }
-
-    void AbilityCoolDownOrDuration(ref float abilityTimer, float time, ref bool ability)
-    {
-        abilityTimer += Time.deltaTime;
-        if(abilityTimer >= time)
-        {
-            ability = false;
-            abilityTimer = 0;
-        }
-    }
-
 }

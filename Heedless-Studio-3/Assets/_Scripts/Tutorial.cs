@@ -30,10 +30,15 @@ public class Tutorial : MonoBehaviour
     [SerializeField]GameObject TriggerObject;
     [SerializeField] bool abilityEarn;
     bool particle = true;
+    public AudioSource disable;
+
+    Abilities ability;
+
     void Start()
     {
         source = GetComponent<AudioSource>();
         player = FindObjectOfType<PlayerController>();
+        ability = FindObjectOfType<Abilities>();
     }
     void Update()
     {
@@ -48,11 +53,11 @@ public class Tutorial : MonoBehaviour
                 if (TriggerTimer >= player.GetComponent<AudioSource>().clip.length)
                 {
                     GetComponent<BoxCollider>().isTrigger = true;
-                    abilityNRemove.SetActive(false);
+                   if(abilityNRemove != null) abilityNRemove.SetActive(false);
                 }
                 if (TriggerTimer >= player.GetComponent<AudioSource>().clip.length - 2.5f && particle && abilityEarn)
                 {
-                    player.abilityEarn.Play();
+                    ability.abilityEarn.Play();
                     particle = false;
                 }
                 // }
@@ -86,15 +91,17 @@ public class Tutorial : MonoBehaviour
             }
             if(Index == 0)
             {
-                player.speedEarned = true;
+                ability.speedEarned = true;
             }
             if (Index == 1)
             {
-                player.TeleEarned = true;
+                ability.TeleEarned = true;
+                if (disable != null) disable.Stop();
             }
             if (Index == 2)
             {
-                player.TpEarned = true;
+                ability.TpEarned = true;
+                if (disable != null) disable.Stop();
             }
             TriggerEffects(ref source, transform.gameObject);
         }

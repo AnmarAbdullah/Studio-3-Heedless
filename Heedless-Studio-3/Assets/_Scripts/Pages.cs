@@ -11,9 +11,11 @@ public class Pages : MonoBehaviour
     PlayerController pplayer;
     public ParticleSystem particle;
     public AudioSource PageSFX;
-    private void Start()
+    Abilities ability;
+    void Start()
     {
         pplayer = FindObjectOfType<PlayerController>();
+        ability = FindObjectOfType<Abilities>();
         player = GameObject.FindWithTag("Player").transform;
         particle.transform.position = transform.position;
     }
@@ -22,7 +24,7 @@ public class Pages : MonoBehaviour
         transform.Rotate(Vector3.up * Time.deltaTime * speed);
         dist = Vector3.Distance(transform.position, player.transform.position);
 
-        if (pplayer.Magnet && !pplayer.TelekenesisOnCD && dist <= 40)
+        if (ability.Magnet && !ability.TelekenesisOnCD && dist <= 40)
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speedtwo * Time.deltaTime);
         }

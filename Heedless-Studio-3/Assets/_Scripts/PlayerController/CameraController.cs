@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour
     public PlayerController pplayer;
     float jumpscare;
     public AbilitiesManager mouseSens;
-    public bool Infuckingdialogue;
     void Start()
     {
         anim = GetComponent<Animator>();

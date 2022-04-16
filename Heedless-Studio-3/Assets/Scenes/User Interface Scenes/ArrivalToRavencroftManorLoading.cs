@@ -15,6 +15,10 @@ public class ArrivalToRavencroftManorLoading : MonoBehaviour
     void Update()
     {
         timeElapsed += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            delayBeforeLoading += 10;
+        }
 
         if (timeElapsed > delayBeforeLoading || Input.GetKeyDown(KeyCode.Space))
         {

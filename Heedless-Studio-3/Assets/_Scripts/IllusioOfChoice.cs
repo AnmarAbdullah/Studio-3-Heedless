@@ -12,9 +12,9 @@ public class IllusioOfChoice : MonoBehaviour
 
     public float InteractionTimer;
 
-    [SerializeField] bool choicechosen;
-    [SerializeField] bool abilityChoicer;
-    Transform player;
+    [SerializeField]bool choicechosen;
+    //Transform player;
+    PlayerController player;
 
     public GameObject lookat;
 
@@ -22,25 +22,17 @@ public class IllusioOfChoice : MonoBehaviour
     public GameObject choiceB;
 
     public GameObject nextProffesor;
-    float disappearTimer;
 
     public bool inDialogue;
     public bool noChoice;
-    public bool hasTp;
     //public AbilitiesManager ABManage;
-    Animation anim;
-    public GameObject cam;
-    public ParticleSystem particle;
-    float particleTimer;
-    CameraController cam2;
-
+    CameraController cam;
     private void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = FindObjectOfType<PlayerController>();
+
         choiceblay = GetComponent<AudioSource>();
-        anim = GetComponent<Animation>();
-        cam = GameObject.FindGameObjectWithTag("MainCamera");
-        cam2 = FindObjectOfType<CameraController>();
+        cam = FindObjectOfType<CameraController>();
     }
     private void Update()
     {
@@ -49,28 +41,29 @@ public class IllusioOfChoice : MonoBehaviour
         {
             Vector3 scale = new Vector3(100, 95.90824f, 100);
             transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
-            transform.rotation = Quaternion.LookRotation(cam2.transform.position - transform.position);
+            // transform.rotation = Quaternion.RotateTowards
             //anim.Play();
             //InterAction();
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            FindObjectOfType<PlayerController>().enabled = false;
-            FindObjectOfType<CameraController>().enabled = false;
+            cam.GetComponent<Animator>().enabled = false;
+            player.enabled = false;
+            cam.enabled = false;
             //FindObjectOfType<CameraController>().GetComponent<Animation>().enabled = false;
             player.transform.LookAt(lookat.transform);
-            FindObjectOfType<CameraController>().Infuckingdialogue = true;
+            //FindObjectOfType<CameraController>().Infuckingdialogue = true;
             InteractionTimer += Time.deltaTime;
             if (InteractionTimer >= choiceblay.clip.length && choiceB != null)
             {
                 buttons[0].SetActive(true);
                 buttons[1].SetActive(true);
             }
-            else if (buttons == null && InteractionTimer >= choiceblay.clip.length)
+            if (buttons == null&& InteractionTimer >= choiceblay.clip.length)
             {
                 endDialogue();
             }
 
-            // cam.GetComponent<Animator>().enabled = false; 
+           // cam.GetComponent<Animator>().enabled = false; 
             if (choicechosen)
             {
                 InteractionTimer = 0;
@@ -79,22 +72,13 @@ public class IllusioOfChoice : MonoBehaviour
             {
                 endDialogue();
                 Destroy(transform.gameObject, 2);
-                player.rotation = Quaternion.Euler(0, 0, 0);
+                player.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            if (noChoice && !choiceblay.isPlaying)
+            if(noChoice && !choiceblay.isPlaying)
             {
                 endDialogue();
-                player.rotation = Quaternion.Euler(0, 0, 0);
+                player.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
-            if (abilityChoicer && choicechosen)
-            {
-                particleTimer += Time.deltaTime;
-                if (particleTimer >= 8)
-                {
-                    particle.Play();
-                }
-            }
-
         }
         else
         {
@@ -102,7 +86,7 @@ public class IllusioOfChoice : MonoBehaviour
             transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.Tab) && inDialogue)
+        if (Input.GetKeyDown(KeyCode.Space) && inDialogue)
         {
             SkipDialogue();
         }
@@ -140,16 +124,16 @@ public class IllusioOfChoice : MonoBehaviour
     void endDialogue()
     {
         inDialogue = false;
-        FindObjectOfType<PlayerController>().enabled = true;
-        FindObjectOfType<PlayerController>().speed = 20;
+        player.enabled = true;
+        player.speed = 20;
         FindObjectOfType<CameraController>().enabled = true;
-        FindObjectOfType<PlayerController>().rb.isKinematic = false;
+        player.rb.isKinematic = false;
         //FindObjectOfType<CameraController>().GetComponent<Animation>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Vector3 scale = new Vector3(100, -5, 100);
         transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
-        player.rotation = Quaternion.Euler(0, 0, 0);
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         nextProffesor.gameObject.SetActive(true);
         //Debug.Log("heloo????????????");
@@ -163,14 +147,8 @@ public class IllusioOfChoice : MonoBehaviour
     }
     void SkipDialogue()
     {
-        // if (choicebla.isPlaying)
-        // {
-        //GetComponent<AudioSource>().time += 5;
-        choiceblay.time += 5;
-        InteractionTimer += 5;
-        particleTimer += 5;
-        //GetComponent<AudioSource>().time += 5;  
-        //}
+            choiceblay.time += 5;
+            InteractionTimer += 5;
     }
 
 
