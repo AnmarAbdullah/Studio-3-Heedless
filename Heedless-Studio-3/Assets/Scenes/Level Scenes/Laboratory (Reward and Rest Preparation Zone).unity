@@ -7138,7 +7138,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a4f580d42838a1c40b2ff9ce030cf64e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 405d53ebdba093944934047328e62940, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7761,7 +7761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You said two hundred forty five! Now you set me free!
+  m_text: I barely survived that haunting ghoul!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
   m_sharedMaterial: {fileID: -698651361288539073, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
@@ -15182,7 +15182,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 47d11c2ea8c44c94698388e772a00b8a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 71d60206edb1fc34597fa4bb0a8b206f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -51331,7 +51331,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 695fdf4d077b203489d336c792c3895d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3226885e5b106004095d22857c40fabe, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -64448,7 +64448,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e7f3763fb7110a44aaf1a6a1e75ff8f9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3efc47f4d19932b4a903ff94ef119166, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -71488,7 +71488,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8fd8b45802c7642488569aa58897b392, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 708a5d47cc49bf742900cded199abde4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -72616,7 +72616,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fb19b329fc079de40a3a77caff9a6e39, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8ea0b690a7825fa4b96a875ee856f36b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -81856,7 +81856,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 779158c032cafa24195168b6ca26c4d0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ccf19a5b42be08d4e99bae6e556d0281, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -121,8 +121,8 @@ public class PlayerController : MonoBehaviour
             Caught = false;
             jumpscare = false;
             camm.enabled = true;
-            if (ability.speedBoost) speed = 35;
-            else { speed = 20; };
+            if (ability.speedBoost) speed = 40;
+            else { speed = 25; };
         }
         
         if (Caught && jumpscare)

@@ -296,7 +296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Arrival to Ravencroft Manor
+  m_text: Ravencroft Manor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
   m_sharedMaterial: {fileID: -698651361288539073, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeLoading: 12
-  scaneNameToLoad: Arrival to Ravencroft Manor (Introduction Zone)
+  timeElapsed: 0
 --- !u!4 &97233268
 Transform:
   m_ObjectHideFlags: 0
