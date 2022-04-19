@@ -6,14 +6,32 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pausemenu;
-    bool isPaused;
+    public bool isPaused;
+    AudioSource[] allAudios;
+    IllusioOfChoice illusion;
 
+    void Start()
+    {
+        allAudios = FindObjectsOfType<AudioSource>();
+        illusion = FindObjectOfType<IllusioOfChoice>();
+    }
     public void Resume()
     {
-        pausemenu.SetActive(false);
+        isPaused = false;
         Time.timeScale = 1;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        pausemenu.SetActive(false);
+        for (int i = 0; i < allAudios.Length; i++)
+        {
+            allAudios[i].UnPause();
+        }
+        if (illusion != null)
+        {
+            if (!illusion.inDialogue) 
+            { 
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+        }
     }
     public void BackToMainMenu()
     {
@@ -23,18 +41,22 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPaused)
+            isPaused = !isPaused;
+        }
+        if (isPaused)
+        {
+            pausemenu.gameObject.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+            for (int i = 0; i < allAudios.Length; i++)
             {
-                pausemenu.gameObject.SetActive(true);
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.None;
-               // Time.timeScale = 0;
-
+                allAudios[i].Pause();
             }
-            if (isPaused)
-            {
-                Resume();
-            }
+        }
+        if (!isPaused)
+        {
+            Resume();
         }
     }
 }

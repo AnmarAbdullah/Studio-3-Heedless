@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     public int PlayerLifes = 5;
     
     public int pageCounter;
-    [SerializeField]AudioSource music;
 
 
     public Pages pages;
@@ -130,12 +129,6 @@ public class PlayerController : MonoBehaviour
             JumpscareObject.gameObject.SetActive(true);
             JumpscareObject.transform.LookAt(transform.position);
             JumpscareObject.transform.position = Vector3.MoveTowards(JumpscareObject.transform.position, cam.transform.position, 50 * Time.deltaTime);
-        }
-
-        if (pageCounter >= 230)
-        {
-            music.Play();
-            Debug.Log("hello???????????");
         }
         if (pageCounter == ThisScenePages)
         {

@@ -31,6 +31,8 @@ public class Abilities : MonoBehaviour
     public bool isStunned;
     [SerializeField] float vanishTimer;
     public bool isVanished;
+    public bool isRevealed;
+    [SerializeField]float telepathyTimer;
 
     public GameObject BlueVig;
     public GameObject RedVig;
@@ -41,6 +43,14 @@ public class Abilities : MonoBehaviour
     public AudioSource PageSFX;
     Astar astar;
     //........
+
+    Shader shader1;
+    Shader shader2;
+    Renderer rend;
+    public GameObject[] ghoul;
+    public Material mat1;
+    public Material mat2;
+
     void Start()
     {
         player = GetComponent<PlayerController>();
@@ -75,7 +85,7 @@ public class Abilities : MonoBehaviour
         }
         if (TelekenesisOnCD)
         {
-            AbilityCoolDownOrDuration(ref TelekenesisCD, 30, ref TelekenesisOnCD);
+            AbilityCoolDownOrDuration(ref TelekenesisCD, 15, ref TelekenesisOnCD);
         }
         if (speedBoost && !SpeedOnCD)
         {
@@ -122,6 +132,38 @@ public class Abilities : MonoBehaviour
         {
             AbilityCoolDownOrDuration(ref vanishTimer, 15, ref isVanished);
         }
+
+        if (isRevealed)
+        {
+            if (astar != null)
+            {
+                if (!astar.isChasing)
+                {
+                    for (int i = 0; i < ghoul.Length; i++)
+                    {
+                        ghoul[i].GetComponent<Renderer>().material = mat1;
+                        ghoul[i].GetComponent<Renderer>().material.color = Color.red;
+                        //AbilityCoolDownOrDuration(ref telepathyTimer, 30, ref isRevealed);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < ghoul.Length; i++)
+                {
+                    ghoul[i].GetComponent<Renderer>().material = mat1;
+                    ghoul[i].GetComponent<Renderer>().material.color = Color.red;
+                    AbilityCoolDownOrDuration(ref telepathyTimer, 30, ref isRevealed);
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < ghoul.Length; i++)
+            {
+                ghoul[i].GetComponent<Renderer>().material = mat2;
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -129,8 +171,6 @@ public class Abilities : MonoBehaviour
         {
             isStunned = true;
             stunTimer = 0;
-            /*AbilitiesInfo[1].SetActive(true);
-            AbilitiesInfo[2].SetActive(true);*/
             AbilitiesInfos(ref RedVig, ref AbilitiesInfo2, 15);
             particle.transform.position = other.transform.position;
             Destroy(other.gameObject);
@@ -141,19 +181,33 @@ public class Abilities : MonoBehaviour
         {
             isVanished = true;
             vanishTimer = 0;
-            /* AbilitiesInfo[1].SetActive(true);
-             AbilitiesInfo[3].SetActive(true);*/
             particle.transform.position = other.transform.position;
             AbilitiesInfos(ref RedVig, ref AbilitiesInfo, 15);
             Destroy(other.gameObject);
             particle.Play();
             PageSFX.Play();
         }
-       /* if (other.gameObject.CompareTag("Stun"))
+        if (other.gameObject.CompareTag("Telepathy"))
         {
-            coming soon...
-        }*/
-
+            isRevealed = true;
+            telepathyTimer = 0;
+            particle.transform.position = other.transform.position;
+            AbilitiesInfos(ref RedVig, ref AbilitiesInfo, 30);
+            Destroy(other.gameObject);
+            particle.Play();
+            PageSFX.Play();
+        }
+        if (other.gameObject.CompareTag("RestArea"))
+        {
+            isVanished = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("RestArea"))
+        {
+            isVanished = false;
+        }
     }
 
     void Teleport()

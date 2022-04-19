@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Linq;
 
-public class AiPathBuilder : EditorWindow
+/*public class AiPathBuilder : EditorWindow
 {
     Node Waypoint;
     GameObject objectToSpawn;
@@ -51,7 +51,7 @@ public class AiPathBuilder : EditorWindow
 
         GameObject node = Instantiate(objectToSpawn, mousePos, Quaternion.identity);
         node.name = "Node " + index;
-        index++;*/     
+        index++;   
             Ray ray = Camera.current.ScreenPointToRay(Event.current.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000.0f))
@@ -62,4 +62,4 @@ public class AiPathBuilder : EditorWindow
             }
         
     }
-}
+}*/

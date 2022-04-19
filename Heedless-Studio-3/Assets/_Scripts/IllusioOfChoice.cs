@@ -7,7 +7,7 @@ public class IllusioOfChoice : MonoBehaviour
 {
     public GameObject[] choiceObject;
     public AudioSource choiceblay;
-
+    [SerializeField]TextMeshProUGUI subtitle;
     public GameObject[] buttons;
 
     public float InteractionTimer;
@@ -15,6 +15,7 @@ public class IllusioOfChoice : MonoBehaviour
     [SerializeField]bool choicechosen;
     //Transform player;
     PlayerController player;
+    PauseMenu pauseMenu;
 
     public GameObject lookat;
 
@@ -25,12 +26,17 @@ public class IllusioOfChoice : MonoBehaviour
 
     public bool inDialogue;
     public bool noChoice;
+
+    public bool choicea;
+    public bool choiceb;
+
     //public AbilitiesManager ABManage;
     CameraController cam;
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
-
+        pauseMenu = FindObjectOfType<PauseMenu>();
         choiceblay = GetComponent<AudioSource>();
         cam = FindObjectOfType<CameraController>();
     }
@@ -39,21 +45,16 @@ public class IllusioOfChoice : MonoBehaviour
         //Debug.LogError(ABManage.SpeedBoost);
         if (inDialogue)
         {
-            Vector3 scale = new Vector3(100, 95.90824f, 100);
-            transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
-            // transform.rotation = Quaternion.RotateTowards
-            //anim.Play();
-            //InterAction();
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            Vector3 scale = new Vector3(100, 95.90824f, 100);
+            transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
             cam.GetComponent<Animator>().enabled = false;
             player.enabled = false;
             cam.enabled = false;
-            //FindObjectOfType<CameraController>().GetComponent<Animation>().enabled = false;
             player.transform.LookAt(lookat.transform);
-            //FindObjectOfType<CameraController>().Infuckingdialogue = true;
             InteractionTimer += Time.deltaTime;
-            if (InteractionTimer >= choiceblay.clip.length && choiceB != null)
+            if (InteractionTimer >= choiceblay.clip.length && choiceB != null && !choicechosen)
             {
                 buttons[0].SetActive(true);
                 buttons[1].SetActive(true);
@@ -88,7 +89,7 @@ public class IllusioOfChoice : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && inDialogue)
         {
-            SkipDialogue();
+            if(!pauseMenu.isPaused) SkipDialogue();
         }
         if (!choiceblay.isPlaying)
         {
@@ -107,8 +108,7 @@ public class IllusioOfChoice : MonoBehaviour
         choiceblay.clip = choiceA.GetComponent<AudioSource>().clip;
         choiceblay.Play();
         removeButtons();
-        /*if (abilityChoicer) { ABManage.SpeedBoost = true; }
-        if (ABManage.SpeedBoost && hasTp) ABManage.Teleport = true;*/
+        choicea = true;
     }
     public void playChoiceB()
     {
@@ -117,10 +117,8 @@ public class IllusioOfChoice : MonoBehaviour
         choiceblay.clip = choiceB.GetComponent<AudioSource>().clip;
         choiceblay.Play();
         removeButtons();
-        /*if(abilityChoicer)ABManage.Telekenesis = true;
-        if(ABManage.Telekenesis && hasTp) ABManage.Teleport = true;*/
+        choiceb = true;
     }
-    //create new function to unlock tp
     void endDialogue()
     {
         inDialogue = false;
@@ -134,7 +132,7 @@ public class IllusioOfChoice : MonoBehaviour
         Vector3 scale = new Vector3(100, -5, 100);
         transform.localScale = Vector3.Lerp(transform.localScale, scale, 5 * Time.deltaTime);
         player.transform.rotation = Quaternion.Euler(0, 0, 0);
-
+        subtitle.gameObject.SetActive(false);
         nextProffesor.gameObject.SetActive(true);
         //Debug.Log("heloo????????????");
     }
@@ -149,6 +147,7 @@ public class IllusioOfChoice : MonoBehaviour
     {
             choiceblay.time += 5;
             InteractionTimer += 5;
+            subtitle.gameObject.SetActive(false);
     }
 
 

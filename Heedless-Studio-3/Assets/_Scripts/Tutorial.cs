@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Tutorial : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class Tutorial : MonoBehaviour
     public GameObject abilityNRemove;
     float ParticleTimer;
     [SerializeField] float particletimerEnd;
+
+    public TextMeshProUGUI subtitles;
+    public float[] timers;
+    public string[] myTexts;
+    bool played;
 
     //public GameObject[] Triggers;
 
@@ -45,19 +51,22 @@ public class Tutorial : MonoBehaviour
         //THE TRIGGER OBJECT MUST BE THE PREVIOUSE ONE BEFORE THIS OBJECT
         if (TriggerObject != null)
         {
-            if (!TriggerObject.gameObject.activeInHierarchy)
+           // TriggerTimer += Time.deltaTime;
+            if (!TriggerObject.gameObject.activeInHierarchy && particle)
             {
                 // if (TriggerTime)
                 //{
-                TriggerTimer += Time.deltaTime;
-                if (TriggerTimer >= player.GetComponent<AudioSource>().clip.length)
-                {
+                //TriggerTimer += Time.deltaTime;
+               // if (TriggerTimer >= player.GetComponent<AudioSource>().clip.length)
+                //{
                     GetComponent<BoxCollider>().isTrigger = true;
-                   if(abilityNRemove != null) abilityNRemove.SetActive(false);
-                }
+                    ability.abilityEarn.Play();
+                    particle = false;
+                //if (abilityNRemove != null) abilityNRemove.SetActive(false);
+               // }
                 if (TriggerTimer >= player.GetComponent<AudioSource>().clip.length - 2.5f && particle && abilityEarn)
                 {
-                    ability.abilityEarn.Play();
+                    //ability.abilityEarn.Play();
                     particle = false;
                 }
                 // }
@@ -74,8 +83,9 @@ public class Tutorial : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !played)
         {
+            played = true;
             TriggerTime = true;
             if (abilityN != null)
             {
@@ -103,7 +113,23 @@ public class Tutorial : MonoBehaviour
                 ability.TpEarned = true;
                 if (disable != null) disable.Stop();
             }
-            TriggerEffects(ref source, transform.gameObject);
+            player.GetComponent<AudioSource>().clip = source.clip;
+            player.GetComponent<AudioSource>().Play();
+            if(myTexts != null)StartCoroutine(subtitleTime(myTexts, timers));
+            //TriggerEffects(ref source, transform.gameObject);
         }
+    }
+    IEnumerator subtitleTime(string[] text, float[] time)
+    {
+        subtitles.gameObject.SetActive(true);
+        for (int i = 0; i < text.Length; i++)
+        {
+            subtitles.text = null;
+            subtitles.text = text[i];
+            yield return new WaitForSeconds(time[i]);
+        }
+        subtitles.gameObject.SetActive(false);
+        transform.gameObject.SetActive(false);
+        abilityN.SetActive(false);
     }
 }

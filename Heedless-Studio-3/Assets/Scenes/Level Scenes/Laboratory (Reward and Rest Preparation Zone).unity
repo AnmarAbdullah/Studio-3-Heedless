@@ -60203,7 +60203,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488086946}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.8834419, y: 1.7424259, z: -72.27548}
+  m_LocalPosition: {x: 0.8834419, y: 1.7424259, z: -75.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1733210735}
@@ -64431,6 +64431,7 @@ GameObject:
   - component: {fileID: 1662250356}
   - component: {fileID: 1662250355}
   - component: {fileID: 1662250354}
+  - component: {fileID: 1662250362}
   m_Layer: 0
   m_Name: The Spirit of Professor Brinton Freeman (2)
   m_TagString: Untagged
@@ -64548,6 +64549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceObject: []
   choiceblay: {fileID: 1662250354}
+  subtitle: {fileID: 1683382161}
   buttons: []
   InteractionTimer: 0
   choicechosen: 0
@@ -64557,6 +64559,8 @@ MonoBehaviour:
   nextProffesor: {fileID: 0}
   inDialogue: 0
   noChoice: 1
+  choicea: 0
+  choiceb: 0
 --- !u!114 &1662250356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64671,6 +64675,69 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 4.22, y: 154.763, z: -0.649}
+--- !u!114 &1662250362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662250353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecd101676a9912428d0dc9e511c6d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subtitles: {fileID: 1683382161}
+  myTexts:
+  - 'As I kept reading it, I accidentally breached portals around this mansion, letting
+    ghouls come through before I could close them as they curse this place. '
+  - ' I casted a forcefield around this mansion with my knowledge of the book to
+    prevent anything else from the book from escaping anywhere else.'
+  - ' I cannot let the rest of humanity pay for my mistakes. I only kept reading.'
+  - " I didn\u2019t fear the unknown, but I should\u2019ve feared what I thought
+    I knew about the unknown"
+  - 'I was heedless. '
+  - " So that\u2019s why I had a vision of an image back in the hallway."
+  - That was the page to casting the forcefield, the moment I entered the forcefield.
+  - "And there\u2019s more ghouls? Just great."
+  - However, in exchange of the forcefield being casted is my spirit.
+  - " The forcefield was so powerful that it ripped the book\u2019s magical pages
+    across the mansion upon being casted because I couldn\u2019t maintain it enough
+    in my control."
+  - ' I am the host of this mansion and I cannot be set free until all the pages
+    are gathered.'
+  - "You already know that unlike the haunting ghouls, I\u2019m unable to physically
+    interact with anything."
+  - "Hence, I can\u2019t gather the pages myself."
+  - ' The book can only grant such small powers like the one you currently have with
+    a few pages. '
+  - Closing the forcefield takes the power of all the pages, the entire book completed.
+  - Do not make me lose hope, onwards to the next area.
+  - " You\u2019ll be going to the deepest areas of this mansion. The underground
+    dungeon. Go! "
+  myTextsA:
+  - 
+  timersA: []
+  myTextsB: []
+  timersB: []
+  timers:
+  - 8
+  - 8
+  - 5
+  - 6
+  - 3
+  - 3.5
+  - 5
+  - 3
+  - 5
+  - 7
+  - 6
+  - 6
+  - 4
+  - 6
+  - 5
+  - 5
+  - 7
 --- !u!1 &1667735646
 GameObject:
   m_ObjectHideFlags: 0
@@ -65249,6 +65316,140 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680166315}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1683382160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1683382163}
+  - component: {fileID: 1683382162}
+  - component: {fileID: 1683382161}
+  m_Layer: 5
+  m_Name: Subtitles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1683382161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683382160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -550.7649, w: -32.23961}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1683382162
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683382160}
+  m_CullTransparentMesh: 1
+--- !u!224 &1683382163
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683382160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2034538549}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 85}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1687948079
 GameObject:
   m_ObjectHideFlags: 0
@@ -72599,6 +72800,7 @@ GameObject:
   - component: {fileID: 1999492634}
   - component: {fileID: 1999492633}
   - component: {fileID: 1999492632}
+  - component: {fileID: 1999492640}
   m_Layer: 0
   m_Name: The Spirit of Professor Brinton Freeman (1)
   m_TagString: Untagged
@@ -72716,6 +72918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceObject: []
   choiceblay: {fileID: 1999492632}
+  subtitle: {fileID: 1683382161}
   buttons:
   - {fileID: 830525762}
   - {fileID: 691696901}
@@ -72727,6 +72930,8 @@ MonoBehaviour:
   nextProffesor: {fileID: 1662250353}
   inDialogue: 0
   noChoice: 0
+  choicea: 0
+  choiceb: 0
 --- !u!114 &1999492634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72841,6 +73046,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 4.816, y: 168.785, z: -4.123}
+--- !u!114 &1999492640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999492631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecd101676a9912428d0dc9e511c6d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subtitles: {fileID: 1683382161}
+  myTexts:
+  - "I had to give you the \u201Cfighting spirit\u201D to at least gather the first
+    two hundred forty five."
+  - I perhaps owe you my story before this curse.
+  - Once again, I am Professor Brinton Freeman. I like to do my research on historic
+    artifacts.
+  - '*Sigh* I never truly believed in real evil, at least not until that night in
+    this mansion.'
+  - "The night I found\u2026 the book. The Necronomicon Ex Mortis, the book of the
+    dead."
+  - ' Inked in blood and bound in human flesh.'
+  - It has the power to resurrect evil from darkness.
+  - 'Being fascinated with witchcraft, I kept reading the book and gained so much
+    knowledge, so much power. '
+  - Throughout all my research, I studied this book to know its origin and unlock
+    its secrets.
+  - "Why is it in this mansion? I couldn\u2019t find an answer. "
+  myTextsA:
+  - "You\u2019re psychotic, you\u2019re really willing to mess with something you
+    know nothing about except it being actually wicked for research purposes?"
+  timersA:
+  - 7
+  myTextsB:
+  - "What happened next? Even though I don\u2019t have a choice because I want to
+    live, why do you need all the pages?"
+  timersB:
+  - 6
+  timers:
+  - 5
+  - 3
+  - 7.5
+  - 5.5
+  - 7.5
+  - 2
+  - 4.5
+  - 6
+  - 6
+  - 4.5
 --- !u!1001 &2004544817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74182,6 +74438,7 @@ RectTransform:
   - {fileID: 2013133253}
   - {fileID: 233661861}
   - {fileID: 632735555}
+  - {fileID: 1683382163}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -74218,6 +74475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausemenu: {fileID: 632735554}
+  isPaused: 0
 --- !u!1 &2036854469
 GameObject:
   m_ObjectHideFlags: 0
@@ -81792,6 +82050,7 @@ GameObject:
   - component: {fileID: 919132148998061730}
   - component: {fileID: 919132148998061732}
   - component: {fileID: 919132148998061731}
+  - component: {fileID: 919132148998061733}
   m_Layer: 0
   m_Name: The Spirit of Professor Brinton Freeman
   m_TagString: Untagged
@@ -81956,6 +82215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceObject: []
   choiceblay: {fileID: 919132148998061731}
+  subtitle: {fileID: 1683382161}
   buttons:
   - {fileID: 2011226782}
   - {fileID: 1350002901}
@@ -81967,6 +82227,39 @@ MonoBehaviour:
   nextProffesor: {fileID: 1999492631}
   inDialogue: 0
   noChoice: 0
+  choicea: 0
+  choiceb: 0
+--- !u!114 &919132148998061733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148998061727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecd101676a9912428d0dc9e511c6d3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subtitles: {fileID: 1683382161}
+  myTexts:
+  - How did you survive collecting all the pages?
+  - 'You are the first amongst the two hundred eighty two mortals to have done it. '
+  - "No matter, you\u2019ll now have to gather the other last remaining pages"
+  myTextsA:
+  - Other remaining pages? I barely survived that haunting ghoul!
+  timersA:
+  - 3.5
+  myTextsB:
+  - "Crud. Alright. I\u2019ll gather the rest. "
+  - "That\u2019s the spirit."
+  timersB:
+  - 5
+  - 2
+  timers:
+  - 3
+  - 3
+  - 4
 --- !u!23 &1711813856059465546
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87004,6 +87297,8 @@ MonoBehaviour:
   isStunned: 0
   vanishTimer: 0
   isVanished: 0
+  isRevealed: 0
+  telepathyTimer: 0
   BlueVig: {fileID: 1593895202}
   RedVig: {fileID: 17113203}
   AbilitiesInfo: {fileID: 0}
@@ -87011,6 +87306,9 @@ MonoBehaviour:
   nulll: {fileID: 0}
   particle: {fileID: 0}
   PageSFX: {fileID: 0}
+  ghoul: []
+  mat1: {fileID: 0}
+  mat2: {fileID: 0}
 --- !u!1001 &6401449891379203238
 PrefabInstance:
   m_ObjectHideFlags: 0
