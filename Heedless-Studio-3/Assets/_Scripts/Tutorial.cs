@@ -35,7 +35,7 @@ public class Tutorial : MonoBehaviour
     bool TriggerTime;
     [SerializeField]GameObject TriggerObject;
     [SerializeField] bool abilityEarn;
-    bool particle = true;
+    [SerializeField ]bool particle = true;
     public AudioSource disable;
 
     Abilities ability;
@@ -62,7 +62,8 @@ public class Tutorial : MonoBehaviour
                     GetComponent<BoxCollider>().isTrigger = true;
                     ability.abilityEarn.Play();
                     particle = false;
-                //if (abilityNRemove != null) abilityNRemove.SetActive(false);
+                    abilityNRemove.SetActive(false);
+                if (abilityNRemove != null) abilityNRemove.SetActive(false);
                // }
                 if (TriggerTimer >= player.GetComponent<AudioSource>().clip.length - 2.5f && particle && abilityEarn)
                 {

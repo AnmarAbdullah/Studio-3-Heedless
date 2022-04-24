@@ -15,8 +15,9 @@ Shader "OurShaders/SeeThroughWalls"
 
             Cull Off
             ZWrite Off
-
+      
             ZTest Always
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -63,6 +64,7 @@ Shader "OurShaders/SeeThroughWalls"
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float3 normal : NORMAL;
             };
 
             struct v2f

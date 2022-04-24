@@ -65356,8 +65356,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
+  m_sharedMaterial: {fileID: -698651361288539073, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -65447,7 +65447,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 85}
+  m_AnchoredPosition: {x: -271, y: 64.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1687948079
@@ -87303,6 +87303,7 @@ MonoBehaviour:
   RedVig: {fileID: 17113203}
   AbilitiesInfo: {fileID: 0}
   AbilitiesInfo2: {fileID: 0}
+  AbilitiesInfo3: {fileID: 0}
   nulll: {fileID: 0}
   particle: {fileID: 0}
   PageSFX: {fileID: 0}

@@ -25052,7 +25052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 57.7, y: 64.7}
+  m_AnchoredPosition: {x: -271, y: 64.7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &563404542
@@ -25077,8 +25077,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
+  m_sharedMaterial: {fileID: -698651361288539073, guid: 23359ff1767b22a41a57873405e39cc3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -25109,7 +25109,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -34265,7 +34265,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5573bde0fdf9d9b4196f3bb95c9b5667, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 66b046a83193fc84db57368172ebd445, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -88822,7 +88822,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 95f094d764c1f1a478495dc3ba099aba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c7f6a642517a72045965feb6642501d9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -105017,7 +105017,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148998061727}
   m_LocalRotation: {x: 0.010044713, y: 0.99720407, z: -0.07404863, w: -0.00024185637}
-  m_LocalPosition: {x: 39.96, y: -1.22, z: -62.95}
+  m_LocalPosition: {x: 39.94, y: -2.18, z: -62.81}
   m_LocalScale: {x: 100.00002, y: 10.074, z: 100.00003}
   m_Children:
   - {fileID: 8591779827632264566}
@@ -105208,7 +105208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choiceObject: []
   choiceblay: {fileID: 919132148998061731}
-  subtitle: {fileID: 0}
+  subtitle: {fileID: 563404542}
   buttons:
   - {fileID: 2011226782}
   - {fileID: 1350002901}
@@ -105246,8 +105246,10 @@ MonoBehaviour:
   - "I\u2019m showing the entire footage recorded in this camera to the highly top
     secret service,"
   - " they\u2019ll be putting this book on extreme levels of security!"
+  - Thank you...
   timersA:
   - 6
+  - 3
   - 3
   myTextsB:
   - Rest in peace sir.
@@ -113334,6 +113336,7 @@ MonoBehaviour:
   RedVig: {fileID: 973563409}
   AbilitiesInfo: {fileID: 0}
   AbilitiesInfo2: {fileID: 0}
+  AbilitiesInfo3: {fileID: 0}
   nulll: {fileID: 0}
   particle: {fileID: 0}
   PageSFX: {fileID: 0}

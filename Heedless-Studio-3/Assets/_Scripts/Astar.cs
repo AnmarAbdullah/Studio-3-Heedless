@@ -100,6 +100,8 @@ public class Astar : MonoBehaviour
 
     void Update()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         //Debug.DrawRay(gb.transform.position, ray.point - gb.transform.position, Color.green);
         Debug.Log(pathIndex);
         gb.transform.LookAt(Player.transform);

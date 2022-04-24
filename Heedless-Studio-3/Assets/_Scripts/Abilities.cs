@@ -38,6 +38,7 @@ public class Abilities : MonoBehaviour
     public GameObject RedVig;
     public TextMeshProUGUI AbilitiesInfo;
     public TextMeshProUGUI AbilitiesInfo2;
+    public TextMeshProUGUI AbilitiesInfo3;
     public TextMeshProUGUI nulll;
     public ParticleSystem particle;
     public AudioSource PageSFX;
@@ -143,7 +144,7 @@ public class Abilities : MonoBehaviour
                     {
                         ghoul[i].GetComponent<Renderer>().material = mat1;
                         ghoul[i].GetComponent<Renderer>().material.color = Color.red;
-                        //AbilityCoolDownOrDuration(ref telepathyTimer, 30, ref isRevealed);
+                        AbilityCoolDownOrDuration(ref telepathyTimer, 30, ref isRevealed);
                     }
                 }
             }
@@ -192,7 +193,7 @@ public class Abilities : MonoBehaviour
             isRevealed = true;
             telepathyTimer = 0;
             particle.transform.position = other.transform.position;
-            AbilitiesInfos(ref RedVig, ref AbilitiesInfo, 30);
+            AbilitiesInfos(ref RedVig, ref AbilitiesInfo3, 30);
             Destroy(other.gameObject);
             particle.Play();
             PageSFX.Play();

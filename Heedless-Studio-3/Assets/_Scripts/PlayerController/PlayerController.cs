@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] int ThisScenePages;
     Abilities ability;
+    IllusioOfChoice dialogue;
 
     Astar astar;
 
@@ -52,12 +53,13 @@ public class PlayerController : MonoBehaviour
         camm = GetComponentInChildren<CameraController>();
        // music = this.GetComponent<AudioSource>();
         astar = FindObjectOfType<Astar>();
+        dialogue = FindObjectOfType<IllusioOfChoice>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         moveForward = Input.GetAxis("Vertical");
         moveAside = Input.GetAxis("Horizontal");
 
@@ -88,10 +90,10 @@ public class PlayerController : MonoBehaviour
         {
             flashlight.enabled = !flashlight.enabled;
         }
-       
+
         dist = Vector3.Distance(transform.position, Enemy.transform.position);
        // dist = Vector3.Distance(transform.position, Enemy2.transform.position);
-        if (dist <= 5)
+        if (dist <= 5 && !ability.isStunned)
         {
             Caught = true;
             JumpscareObject.gameObject.SetActive(true);

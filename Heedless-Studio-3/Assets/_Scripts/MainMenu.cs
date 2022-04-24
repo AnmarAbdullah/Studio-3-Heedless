@@ -22,6 +22,8 @@ public class MainMenu : MonoBehaviour
     {
         AudioListener.volume = volumeSlider.value;
         mouseSen.MouseSens = MouseSensSlider.value;
+        /*Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;*/
     }
 
 }
