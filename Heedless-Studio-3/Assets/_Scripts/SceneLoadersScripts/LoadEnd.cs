@@ -10,7 +10,7 @@ public class LoadEnd : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("Credits");
         }
     }
 }

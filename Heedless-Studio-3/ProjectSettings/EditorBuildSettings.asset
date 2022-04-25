@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level Scenes/Dining Room (Reward and Rest Preparation Zone).unity
     guid: d73e81339a74f8c45b8e5a9e3d6cf180
+  - enabled: 1
+    path: Assets/Scenes/Level Scenes/Credits.unity
+    guid: 4af6cfa4c7dc4ea4c9d5fd3b590a509a
   m_configObjects: {}
