@@ -15,8 +15,8 @@ public class Saving : MonoBehaviour
 
     void Start()
     {
-
-        SaveLoadSystem.BeginSave("game.data");
+        player = FindObjectOfType<PlayerController>();
+       /* SaveLoadSystem.BeginSave("/game.data");
         SaveLoadSystem.Insert(health);
         SaveLoadSystem.Insert(damage);
         SaveLoadSystem.Insert(transform.position);
@@ -24,18 +24,12 @@ public class Saving : MonoBehaviour
         SaveLoadSystem.EndSave();
 
 
-        SaveLoadSystem.BeginLoad("game.data");
+        SaveLoadSystem.BeginLoad("/game.data");
         health = SaveLoadSystem.Load<int>();
         damage = SaveLoadSystem.Load<int>();
         transform.position = SaveLoadSystem.Load<Vector3>();
         transform.rotation = SaveLoadSystem.Load<Quaternion>();
-        SaveLoadSystem.EndLoad();
-
-
-
-        player = FindObjectOfType<PlayerController>();
-        /*hehe.pageCount = player.pageCounter;
-        hehe.level = SceneManager.GetActiveScene().buildIndex;*/
+        SaveLoadSystem.EndLoad();*/
     }
     
 
@@ -52,14 +46,27 @@ public class Saving : MonoBehaviour
             Load();
             Debug.Log("Loaded");
         }
+
     }
     public void Save()
     {
-        //playeh.SavePlayer();
+        SaveLoadSystem.BeginSave("/game.data");
+        SaveLoadSystem.Insert(player.PlayerLifes);
+        SaveLoadSystem.Insert(player.level);
+        SaveLoadSystem.Insert(player.pageCounter);
+        SaveLoadSystem.EndSave();
+        SaveLoadSystem.Insert(transform.position);
+        SaveLoadSystem.EndSave();
     }
     
     public void Load()
     {
-        //playeh.LoadPlayer();
+        SaveLoadSystem.BeginLoad("/game.data");
+        player.PlayerLifes = SaveLoadSystem.Load<int>();
+        player.level = SaveLoadSystem.Load<int>();
+        SaveLoadSystem.EndLoad();
+        player.loading();
+        transform.position = SaveLoadSystem.Load<Vector3>();
+        transform.rotation = SaveLoadSystem.Load<Quaternion>();
     }
 }

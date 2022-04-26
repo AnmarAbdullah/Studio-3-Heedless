@@ -12,7 +12,6 @@ public class TutorialGhoul : MonoBehaviour
 
     float speed = 20; // Original Value = 6
     float dist;
-
     private void Start()
     {
         player = FindObjectOfType<CameraController>();
@@ -34,6 +33,10 @@ public class TutorialGhoul : MonoBehaviour
         if (ability.isStunned)
         {
             speed = 0;
+        }
+        else
+        {
+            speed = 20;
         }
     }
 }

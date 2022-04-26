@@ -23,9 +23,12 @@ public class PlayerController : MonoBehaviour
     
     public int pageCounter;
 
+    public int level;
 
     public Pages pages;
     public Rigidbody rb;
+
+    Saving save;
 
     public GameObject JumpscareObject;
     [SerializeField]float deathTimer;
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        save = FindObjectOfType<Saving>();
         ability = GetComponent<Abilities>();
         rb = GetComponent<Rigidbody>();
         //flashlight = GetComponent<Light>();
@@ -89,7 +93,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             flashlight.enabled = !flashlight.enabled;
+            camm.GetComponent<AudioSource>().Play();
         }
+        /*if (Input.GetKeyDown(KeyCode.H))
+        {
+            save.Save();
+            Debug.Log("saved");
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            save.Load();
+        }*/
+        //loading();
 
         dist = Vector3.Distance(transform.position, Enemy.transform.position);
        // dist = Vector3.Distance(transform.position, Enemy2.transform.position);
@@ -143,6 +158,7 @@ public class PlayerController : MonoBehaviour
         PageCounterText.text = pageCounter.ToString();
         PlayerLifeText.text = PlayerLifes.ToString();
 
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -155,6 +171,31 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<IllusioOfChoice>().InterAction();
             FindObjectOfType<IllusioOfChoice>().inDialogue = true;
             Destroy(other.gameObject);
+        }
+    }
+
+    public void loading()
+    {
+        switch (level)
+        {
+            case 1:
+                SceneManager.LoadScene("Arrival to Ravencroft Manor (Introduction Zone)");
+                break;
+            case 2:
+                SceneManager.LoadScene("Main Hall (Reward and Rest Preparation Zone)");
+                break;
+            case 3:
+                SceneManager.LoadScene("Ground Floor (Action Zone) V2");
+                break;
+            case 4:
+                SceneManager.LoadScene("Laboratory (Reward and Rest Preparation Zone)");
+                break;
+            case 5:
+                SceneManager.LoadScene("Dungeon (Action Zone)");
+                break;
+            case 6:
+                SceneManager.LoadScene("Dining Room (Reward and Rest Preparation Zone)");
+                break;
         }
     }
 }
