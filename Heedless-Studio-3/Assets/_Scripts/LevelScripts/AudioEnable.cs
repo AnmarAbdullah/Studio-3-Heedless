@@ -14,6 +14,7 @@ public class AudioEnable : MonoBehaviour
             Audio = GetComponent<AudioSource>();
             Audio.clip = Music;
             Audio.loop = true;
+            Audio.volume = 0.4f;
             Audio.Play();
         }
     }

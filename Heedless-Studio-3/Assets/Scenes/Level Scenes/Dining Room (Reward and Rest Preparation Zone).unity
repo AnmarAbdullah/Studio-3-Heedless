@@ -3395,7 +3395,7 @@ GameObject:
   - component: {fileID: 74644962}
   m_Layer: 0
   m_Name: MainHallStructureObject (718)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4599,7 +4599,7 @@ GameObject:
   - component: {fileID: 104714990}
   m_Layer: 0
   m_Name: MainHallStructureObject (707)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7820,7 +7820,7 @@ GameObject:
   - component: {fileID: 179766080}
   m_Layer: 0
   m_Name: DiningRoomStructureObject (10)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8722,7 +8722,7 @@ GameObject:
   - component: {fileID: 202216600}
   m_Layer: 0
   m_Name: DiningRoomStructureObject (50)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11451,7 +11451,7 @@ GameObject:
   - component: {fileID: 250581654}
   m_Layer: 0
   m_Name: MainHallStructureObject (714)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13242,7 +13242,7 @@ GameObject:
   - component: {fileID: 285005959}
   m_Layer: 0
   m_Name: MainHallStructureObject (733)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15276,7 +15276,7 @@ GameObject:
   - component: {fileID: 324254396}
   m_Layer: 0
   m_Name: MainHallStructureObject (333)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17932,7 +17932,7 @@ GameObject:
   - component: {fileID: 374359124}
   m_Layer: 0
   m_Name: DiningRoomStructureObject (57)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18412,7 +18412,7 @@ GameObject:
   - component: {fileID: 404413040}
   m_Layer: 0
   m_Name: MainHallStructureObject (719)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21188,7 +21188,7 @@ GameObject:
   - component: {fileID: 477090592}
   m_Layer: 0
   m_Name: MainHallStructureObject (37)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25143,7 +25143,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -25166,9 +25166,9 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -30779,7 +30779,7 @@ GameObject:
   - component: {fileID: 712392337}
   m_Layer: 0
   m_Name: MainHallStructureObject (28)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31400,7 +31400,7 @@ GameObject:
   - component: {fileID: 718238165}
   m_Layer: 0
   m_Name: MainHallStructureObject (73)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33151,7 +33151,7 @@ GameObject:
   - component: {fileID: 757885244}
   m_Layer: 0
   m_Name: MainHallStructureObject (49)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33919,7 +33919,7 @@ GameObject:
   - component: {fileID: 769091026}
   m_Layer: 0
   m_Name: MainHallStructureObject (68)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35111,7 +35111,7 @@ GameObject:
   - component: {fileID: 793236226}
   m_Layer: 0
   m_Name: MainHallStructureObject (755)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35207,7 +35207,7 @@ GameObject:
   - component: {fileID: 796687776}
   m_Layer: 0
   m_Name: MainHallStructureObject (737)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43027,7 +43027,7 @@ GameObject:
   - component: {fileID: 1022425669}
   m_Layer: 0
   m_Name: MainHallStructureObject (734)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43752,7 +43752,7 @@ GameObject:
   - component: {fileID: 1042553665}
   m_Layer: 0
   m_Name: MainHallStructureObject (705)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51133,7 +51133,7 @@ GameObject:
   - component: {fileID: 1082929579}
   m_Layer: 0
   m_Name: DiningRoomStructureObject(17) (2)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52985,7 +52985,7 @@ GameObject:
   - component: {fileID: 1126252960}
   m_Layer: 0
   m_Name: MainHallStructureObject (758)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61359,7 +61359,7 @@ GameObject:
   - component: {fileID: 1195793107}
   m_Layer: 0
   m_Name: MainHallStructureObject (703)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65884,7 +65884,7 @@ GameObject:
   - component: {fileID: 1284932715}
   m_Layer: 0
   m_Name: MainHallStructureObject (750)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67477,7 +67477,7 @@ GameObject:
   - component: {fileID: 1309895529}
   m_Layer: 0
   m_Name: MainHallStructureObject (753)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77762,7 +77762,7 @@ GameObject:
   - component: {fileID: 1509920423}
   m_Layer: 0
   m_Name: MainHallStructureObject (710)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82714,7 +82714,7 @@ GameObject:
   - component: {fileID: 1616753678}
   m_Layer: 0
   m_Name: MainHallStructureObject (757)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83195,7 +83195,7 @@ GameObject:
   - component: {fileID: 1618996539}
   m_Layer: 0
   m_Name: DiningRoomStructureObject(15) (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84968,7 +84968,7 @@ GameObject:
   - component: {fileID: 1673099051}
   m_Layer: 0
   m_Name: MainHallStructureObject (67)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86540,7 +86540,7 @@ GameObject:
   - component: {fileID: 1705849345}
   m_Layer: 0
   m_Name: DiningRoomStructureObject (54)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87190,7 +87190,7 @@ GameObject:
   - component: {fileID: 1718549318}
   m_Layer: 0
   m_Name: MainHallStructureObject (730)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87382,7 +87382,7 @@ GameObject:
   - component: {fileID: 1720087889}
   m_Layer: 0
   m_Name: MainHallStructureObject (729)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89002,7 +89002,7 @@ GameObject:
   - component: {fileID: 1751820767}
   m_Layer: 0
   m_Name: DiningRoomStructureObject (59)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93888,7 +93888,7 @@ GameObject:
   - component: {fileID: 1864929191}
   m_Layer: 0
   m_Name: DiningRoomStructureObject (61)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95511,7 +95511,7 @@ GameObject:
   - component: {fileID: 1898528341}
   m_Layer: 0
   m_Name: MainHallStructureObject (749)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98963,7 +98963,7 @@ GameObject:
   - component: {fileID: 1972843389}
   m_Layer: 0
   m_Name: MainHallStructureObject (76)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99615,7 +99615,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996103562}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13, y: -0.000039100647, z: -66.400024}
+  m_LocalPosition: {x: -13, y: -0.000039100647, z: -49.957}
   m_LocalScale: {x: 9.2, y: 20, z: 2}
   m_Children: []
   m_Father: {fileID: 1822055402}
@@ -99771,7 +99771,7 @@ GameObject:
   - component: {fileID: 1997468554}
   m_Layer: 0
   m_Name: DiningRoomStructureObject (48)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100155,7 +100155,7 @@ GameObject:
   - component: {fileID: 2003697044}
   m_Layer: 0
   m_Name: MainHallStructureObject (745)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102816,7 +102816,7 @@ GameObject:
   - component: {fileID: 2083339460}
   m_Layer: 0
   m_Name: MainHallStructureObject (732)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103941,7 +103941,7 @@ GameObject:
   - component: {fileID: 2113579780}
   m_Layer: 0
   m_Name: MainHallStructureObject (713)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104037,7 +104037,7 @@ GameObject:
   - component: {fileID: 2114261313}
   m_Layer: 0
   m_Name: MainHallStructureObject (721)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105873,14 +105873,14 @@ MonoBehaviour:
   myTexts:
   - 'You did it, you did it. You collected all the pages. Before I go, please tell
     me your name. '
-  - Aiden Augustine
+  - Aiden Augustine.
   - 'Aiden Augustine, read this exact line and please do not misspeak. '
-  - Say it completely, properly, free us both, end this curse
+  - Say it completely, properly. Free us both, end this curse.
   - Okay okay, I know.
   myTextsA:
   - "I\u2019m showing the entire footage recorded in this camera to the highly top
     secret service,"
-  - " they\u2019ll be putting this book on extreme levels of security!"
+  - "they\u2019ll be putting this book on extreme levels of security!"
   - Thank you...
   timersA:
   - 6

@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42270a7a9ecf34c468fd76de91cdc47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeLoading: 14
+  delayBeforeLoading: 16
   timeElapsed: 0
 --- !u!111 &97233270
 Animation:

@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 19330909}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (207)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1327,7 +1327,7 @@ GameObject:
   - component: {fileID: 52732861}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (9)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2328,7 +2328,7 @@ GameObject:
   - component: {fileID: 98922898}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (16)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3982,7 +3982,7 @@ GameObject:
   - component: {fileID: 177276973}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (19)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4812,7 +4812,7 @@ GameObject:
   - component: {fileID: 215031215}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (65)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5619,7 +5619,7 @@ GameObject:
   - component: {fileID: 238417237}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (15)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7526,7 +7526,7 @@ GameObject:
   - component: {fileID: 327545185}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (7)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9278,7 +9278,7 @@ GameObject:
   - component: {fileID: 410364729}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (57)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10265,7 +10265,7 @@ GameObject:
   - component: {fileID: 447911770}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (66)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10724,7 +10724,7 @@ GameObject:
   - component: {fileID: 459431255}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (276)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13309,7 +13309,7 @@ GameObject:
   - component: {fileID: 549340415}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (12)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13405,7 +13405,7 @@ GameObject:
   - component: {fileID: 558402216}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (4)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15862,7 +15862,7 @@ GameObject:
   - component: {fileID: 654144887}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (58)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15950,7 +15950,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15289858
+  m_Name: pb_Mesh2446236
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17427,7 +17427,7 @@ GameObject:
   - component: {fileID: 738432781}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (205)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17940,7 +17940,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758195382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.79, y: 0.88, z: 12.193281}
+  m_LocalPosition: {x: 28.79, y: 0.88, z: -37.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1340020653}
@@ -23896,7 +23896,7 @@ GameObject:
   - component: {fileID: 790678165}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (283)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24088,7 +24088,7 @@ GameObject:
   - component: {fileID: 801714469}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (208)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29878,7 +29878,7 @@ GameObject:
   - component: {fileID: 826659042}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (81)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43430,7 +43430,7 @@ GameObject:
   - component: {fileID: 863686093}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (8)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44228,7 +44228,7 @@ GameObject:
   - component: {fileID: 891455903}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (210)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46511,7 +46511,7 @@ GameObject:
   - component: {fileID: 1027999404}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46587,7 +46587,7 @@ GameObject:
   - component: {fileID: 1028804831}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (209)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48775,7 +48775,7 @@ GameObject:
   - component: {fileID: 1178414900}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (262)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49693,7 +49693,7 @@ GameObject:
   - component: {fileID: 1227129117}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (11)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50461,7 +50461,7 @@ GameObject:
   - component: {fileID: 1255057947}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (5)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51935,7 +51935,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15289802
+  m_Name: pb_Mesh2446180
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -60122,7 +60122,7 @@ GameObject:
   - component: {fileID: 1473217762}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (2)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60308,7 +60308,7 @@ GameObject:
   - component: {fileID: 1480696051}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (206)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61528,7 +61528,7 @@ GameObject:
   - component: {fileID: 1531440402}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (17)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62104,7 +62104,7 @@ GameObject:
   - component: {fileID: 1553088120}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (18)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62200,7 +62200,7 @@ GameObject:
   - component: {fileID: 1555087351}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64929,6 +64929,7 @@ Transform:
   - {fileID: 923670571}
   - {fileID: 1160131030}
   - {fileID: 1973508442}
+  - {fileID: 1787877947}
   m_Father: {fileID: 784911336}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65400,30 +65401,30 @@ MonoBehaviour:
   myTexts:
   - 'As I kept reading it, I accidentally breached portals around this mansion, letting
     ghouls come through before I could close them as they curse this place. '
-  - ' I casted a forcefield around this mansion with my knowledge of the book to
-    prevent anything else from the book from escaping anywhere else.'
-  - ' I cannot let the rest of humanity pay for my mistakes. I only kept reading.'
-  - " I didn\u2019t fear the unknown, but I should\u2019ve feared what I thought
-    I knew about the unknown"
+  - I casted a forcefield around this mansion with my knowledge of the book to prevent
+    anything else from the book from escaping anywhere else.
+  - I cannot let the rest of humanity pay for my mistakes. I only kept reading.
+  - "I didn\u2019t fear the unknown, but I should\u2019ve feared what I thought I
+    knew about the unknown."
   - 'I was heedless. '
-  - " So that\u2019s why I had a vision of an image back in the hallway."
+  - "So that\u2019s why I had a vision of an image back in the hallway."
   - That was the page to casting the forcefield, the moment I entered the forcefield.
   - "And there\u2019s more ghouls? Just great."
   - However, in exchange of the forcefield being casted is my spirit.
-  - " The forcefield was so powerful that it ripped the book\u2019s magical pages
+  - "The forcefield was so powerful that it ripped the book\u2019s magical pages
     across the mansion upon being casted because I couldn\u2019t maintain it enough
     in my control."
-  - ' I am the host of this mansion and I cannot be set free until all the pages
-    are gathered.'
+  - I am the host of this mansion and I cannot be set free until all the pages are
+    gathered.
   - "You already know that unlike the haunting ghouls, I\u2019m unable to physically
     interact with anything."
   - "Hence, I can\u2019t gather the pages myself."
-  - ' The book can only grant such small powers like the one you currently have with
+  - 'The book can only grant such small powers like the one you currently have with
     a few pages. '
   - Closing the forcefield takes the power of all the pages, the entire book completed.
   - Do not make me lose hope, onwards to the next area.
-  - " You\u2019ll be going to the deepest areas of this mansion. The underground
-    dungeon. Go! "
+  - "You\u2019ll be going to the deepest areas of this mansion. The underground dungeon.
+    Go! "
   myTextsA:
   - 
   timersA: []
@@ -65434,9 +65435,9 @@ MonoBehaviour:
   - 8
   - 5
   - 6
+  - 2
   - 3
-  - 3.5
-  - 5
+  - 4
   - 3
   - 5
   - 7
@@ -65445,7 +65446,7 @@ MonoBehaviour:
   - 4
   - 6
   - 5
-  - 5
+  - 4
   - 7
 --- !u!1 &1667735646
 GameObject:
@@ -66073,7 +66074,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -66096,9 +66097,9 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -66126,7 +66127,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -550.7649, w: -32.23961}
+  m_margin: {x: -318.67062, y: 0, z: -879.9874, w: -32.23961}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -66461,7 +66462,7 @@ GameObject:
   - component: {fileID: 1696292815}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (3)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66973,7 +66974,7 @@ GameObject:
   - component: {fileID: 1712787736}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (73)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67928,7 +67929,7 @@ GameObject:
   - component: {fileID: 1747546071}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (14)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68334,7 +68335,7 @@ GameObject:
   - component: {fileID: 1755064385}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (150)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68953,6 +68954,102 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786717647}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1787877946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1787877947}
+  - component: {fileID: 1787877950}
+  - component: {fileID: 1787877949}
+  - component: {fileID: 1787877948}
+  m_Layer: 0
+  m_Name: LaboratoryStructureObject (237)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1787877947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787877946}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.04000058, y: 12.999983, z: -8.692}
+  m_LocalScale: {x: 1, y: 0.040000018, z: 25}
+  m_Children: []
+  m_Father: {fileID: 1652949704}
+  m_RootOrder: 319
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &1787877948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787877946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 4.9626884, z: 1}
+  m_Center: {x: 0, y: -1.9813436, z: -0.000000009069874}
+--- !u!23 &1787877949
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787877946}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3a61d8502f71c944ab380514f6c45098, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1787877950
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787877946}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1793798868
 GameObject:
@@ -70044,7 +70141,7 @@ GameObject:
   - component: {fileID: 1841172064}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (10)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70540,7 +70637,7 @@ GameObject:
   - component: {fileID: 1866523512}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (269)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73850,7 +73947,7 @@ MonoBehaviour:
     this mansion.'
   - "The night I found\u2026 the book. The Necronomicon Ex Mortis, the book of the
     dead."
-  - ' Inked in blood and bound in human flesh.'
+  - Inked in blood and bound in human flesh.
   - It has the power to resurrect evil from darkness.
   - 'Being fascinated with witchcraft, I kept reading the book and gained so much
     knowledge, so much power. '
@@ -73966,7 +74063,7 @@ GameObject:
   - component: {fileID: 2006411844}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (74)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75559,7 +75656,7 @@ GameObject:
   - component: {fileID: 2038831491}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (204)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75655,7 +75752,7 @@ GameObject:
   - component: {fileID: 2052378583}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (6)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77003,7 +77100,7 @@ GameObject:
   - component: {fileID: 2093237075}
   m_Layer: 0
   m_Name: LaboratoryStructureObject (13)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -35,7 +35,7 @@ public class Tutorial : MonoBehaviour
     bool TriggerTime;
     [SerializeField]GameObject TriggerObject;
     [SerializeField] bool abilityEarn;
-    [SerializeField ]bool particle = true;
+    [SerializeField] bool particle = true;
     public AudioSource disable;
 
     Abilities ability;
